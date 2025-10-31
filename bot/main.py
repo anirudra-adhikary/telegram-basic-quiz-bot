@@ -24,7 +24,9 @@ load_dotenv()  # Load environment variables from .env file
 
 # --- Bot Handlers ---
 
-async def startquiz(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+
+#python quiz
+async def python(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Starts a new quiz in the group chat, only if initiated by an admin."""
     chat = update.effective_chat
     user = update.effective_user
@@ -68,7 +70,93 @@ async def startquiz(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         return
 
     try:
-        with open('questions.json', 'r') as f:
+        with open('questions_python.json', 'r') as f:
+            questions_data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        logger.error(f"Error loading questions: {e}")
+        await update.message.reply_text("❌ Sorry, I couldn't load the quiz questions right now.")
+        return
+
+    all_questions = questions_data.get("questions", [])
+    
+    QUIZ_LENGTH = 10
+    
+    if len(all_questions) < QUIZ_LENGTH:
+        await update.message.reply_text(f"❌ Not enough questions in the database. Need at least {QUIZ_LENGTH}.")
+        return
+
+    selected_questions = random.sample(all_questions, QUIZ_LENGTH)
+    
+    # Store quiz data in bot_data for global access
+    quiz_data = {
+        'quiz_questions': selected_questions,
+        'current_question_index': 0,
+        'scores': {},
+        'quiz_active': True,
+        'chat_id': chat_id
+    }
+    
+    # Store in bot_data (our single source of truth)
+    context.bot_data[active_quiz_key] = quiz_data
+
+    await update.message.reply_text(
+        f"🎯 **Quiz Started!**\n\n"
+        f"• {QUIZ_LENGTH} random questions\n"
+        "• 30 seconds per question\n\n"
+        "Good luck! 🍀",
+        parse_mode='Markdown'
+    )
+
+    # Manually pass the quiz_data to the first call
+    await send_next_question(context, quiz_data)
+
+
+#java quiz
+async def java(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Starts a new quiz in the group chat, only if initiated by an admin."""
+    chat = update.effective_chat
+    user = update.effective_user
+
+    if not user or not chat:
+        logger.warning("Could not get user or chat from update.")
+        return
+        
+    # --- Admin Check Logic ---
+    
+    # 1. Check if we are in a group or supergroup
+    if chat.type == 'private':
+        await update.message.reply_text("This command only works in groups! 😅")
+        return # Stop execution
+
+    # 2. Get the user's status in the group
+    try:
+        chat_member = await context.bot.get_chat_member(chat_id=chat.id, user_id=user.id)
+    except Exception as e:
+        logger.error(f"Error checking chat member status: {e}")
+        await update.message.reply_text("I couldn't check your permissions. 😬\nMake sure I have admin rights to see other members.")
+        return
+
+    # 3. Check if the status is 'administrator' or 'creator'
+    if chat_member.status not in ['administrator', 'creator']:
+        await update.message.reply_text("Sorry, only group admins can start a quiz! ⛔️")
+        return # Stop execution if not an admin
+        
+    logger.info(f"Admin check passed for user {user.id} in chat {chat.id}. Starting quiz...")
+    # --- End Admin Check Logic ---
+
+    chat_id = update.effective_chat.id
+
+    # Check if quiz is already active using bot_data
+    active_quiz_key = f'active_quiz_{chat_id}'
+    if context.bot_data.get(active_quiz_key, {}).get('quiz_active', False):
+        await update.message.reply_text(
+            "A quiz is already in progress in this group! 😮\n"
+            "Wait for it to finish before starting a new one."
+        )
+        return
+
+    try:
+        with open('questions_java.json', 'r') as f:
             questions_data = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError) as e:
         logger.error(f"Error loading questions: {e}")
@@ -354,7 +442,7 @@ async def scoreboard(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
             result_text = format_scoreboard(scores)
             await update.message.reply_text(result_text, parse_mode='Markdown')
         else:
-            await update.message.reply_text("No quiz has been completed yet. Use /startquiz to begin a new one.")
+            await update.message.reply_text("No quiz has been completed yet.")
 
 
 # --- Main Application Logic ---
@@ -367,11 +455,15 @@ def main() -> None:
 
     application = Application.builder().token(TOKEN).build()
 
-    application.add_handler(CommandHandler("startquiz", startquiz))
+    #java quiz
+    application.add_handler(CommandHandler("java", java))
     application.add_handler(CommandHandler("scoreboard", scoreboard))
     # application.add_handler(CommandHandler("stopquiz", end_quiz(context, quiz_data)))
     
     application.add_handler(PollAnswerHandler(handle_poll_answer))
+
+    #python quiz
+    application.add_handler(CommandHandler("python", python))
 
     logger.info("Starting bot...")
     application.run_polling()

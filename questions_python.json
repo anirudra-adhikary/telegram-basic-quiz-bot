@@ -1,0 +1,147 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the output of the following code?",
+      "code_snippet": "print(\"Hello, Python!\")",
+      "language": "python",
+      "options": [
+        "\"Hello, Python!\"",
+        "Hello, Python!",
+        "print(\"Hello, Python!\")",
+        "Error"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 2,
+      "question": "Which of the following is the correct way to assign the value 10 to a variable named 'x'?",
+      "code_snippet": null,
+      "language": "python",
+      "options": [
+        "x = 10",
+        "10 = x",
+        "x := 10",
+        "var x = 10"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 3,
+      "question": "How do you start a single-line comment in Python?",
+      "code_snippet": null,
+      "language": "python",
+      "options": [
+        "//",
+        "#",
+        "/*",
+        "--"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 4,
+      "question": "What is the data type of the value \"Hello\"?",
+      "code_snippet": null,
+      "language": "python",
+      "options": [
+        "int",
+        "float",
+        "str",
+        "bool"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 5,
+      "question": "What is the output of `type(5)`?",
+      "code_snippet": "type(5)",
+      "language": "python",
+      "options": [
+        "<class 'int'>",
+        "<class 'str'>",
+        "<class 'float'>",
+        "Integer"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 6,
+      "question": "Which function is used to get the number of items in a list?",
+      "code_snippet": "my_list = [1, 2, 3]",
+      "language": "python",
+      "options": [
+        "count(my_list)",
+        "size(my_list)",
+        "len(my_list)",
+        "length(my_list)"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 7,
+      "question": "Which operator is used to check if two values are equal?",
+      "code_snippet": null,
+      "language": "python",
+      "options": [
+        "=",
+        "==",
+        "!=",
+        "is"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 8,
+      "question": "Which keyword is used to define a function in Python?",
+      "code_snippet": null,
+      "language": "python",
+      "options": [
+        "func",
+        "function",
+        "def",
+        "define"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 9,
+      "question": "How do you access the first element ('apple') of this list?",
+      "code_snippet": "fruits = [\"apple\", \"banana\", \"cherry\"]",
+      "language": "python",
+      "options": [
+        "fruits(0)",
+        "fruits[1]",
+        "fruits.first()",
+        "fruits[0]"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 10,
+      "question": "What is the data type of `True`?",
+      "code_snippet": null,
+      "language": "python",
+      "options": [
+        "boolean",
+        "str",
+        "int",
+        "bool"
+      ],
+      "correct_answer": 3
+    },
+    {
+        "id": 11,
+        "question": "Dictionaries are used to store data values in",
+        "code_snippet": null,
+        "language": "python",
+        "options": [
+            "linear list",
+            "array",
+            "lexicographical order",
+            "key-value pairs"
+        ],
+        "correct_answer": 3
+        }
+  ]
+}
