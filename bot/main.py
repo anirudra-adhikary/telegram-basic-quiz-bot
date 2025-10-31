@@ -77,7 +77,7 @@ async def startquiz(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
     all_questions = questions_data.get("questions", [])
     
-    QUIZ_LENGTH = 10
+    QUIZ_LENGTH = 5
     
     if len(all_questions) < QUIZ_LENGTH:
         await update.message.reply_text(f"❌ Not enough questions in the database. Need at least {QUIZ_LENGTH}.")
