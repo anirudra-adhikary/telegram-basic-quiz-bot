@@ -1,0 +1,407 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "Fill the correct option to print \"Hello World\" in console",
+      "code_snippet":"System.out._______(\"Hello World\");",
+      "language": "python",
+      "options": ["prntl", "println", "echo", "printliner"],
+      "correct_answer": 1
+    },
+    {
+      "id": 2,
+      "question": "Who invented Java Programming?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": ["Guido van Rossum", "James Gosling", "Dennis Ritchie", "Bjarne Stroustrup"],
+      "correct_answer": 1
+    },
+    {
+      "id": 3,
+      "question": "Which statement is true about Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Java is a sequence-dependent programming language",
+        "Java is a code dependent programming language",
+        "Java is a platform-dependent programming language",
+        "Java is a platform-independent programming language"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 4,
+      "question": "Which component is used to compile, debug and execute the java programs?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "JRE",
+        "JIT",
+        "JDK",
+        "JVM"
+      ],
+      "correct_answer": 2,
+      "explanation": "JDK is a core component of Java Environment and provides all the tools, executables and binaries required to compile, debug and execute a Java Program."
+    },
+    {
+      "id": 5,
+      "question": "What is the extension of java code files?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        ".js",
+        ".txt",
+        ".class",
+        ".java"
+      ],
+      "correct_answer": 3,
+      "explanation": "Java files have .java extension."
+    },
+    {
+      "id": 6,
+      "question": "What will be the output of the following Java code?",
+      "code_snippet": "class increment {\n    public static void main(String args[]) \n    {\n         int g = 3;\n         System.out.print(++g * 8);\n    }\n}",
+      "language": "Java",
+      "options": [
+        "32",
+        "33",
+        "24",
+        "25"
+      ],
+      "correct_answer": 0,
+      "explanation": "The expression is ++g * 8. The '++g' is a **pre-increment** operator, which means the value of 'g' is incremented first, and then the new value is used in the expression. The initial value of g is 3. It is first incremented to 4. Then, the expression evaluates to 4 * 8, which is 32."
+    },
+    {
+      "id": 7,
+      "question": "Which of the following is not an OOPS concept in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Polymorphism",
+        "Inheritance",
+        "Compilation",
+        "Encapsulation"
+      ],
+      "correct_answer": 2,
+      "explanation": "Compilation is a phase in the software development lifecycle (translating source code to bytecode), whereas Polymorphism, Inheritance, and Encapsulation are core Object-Oriented Programming System (OOPS) concepts."
+    },
+    {
+      "id": 8,
+      "question": "What is the extension of compiled java classes?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        ".txt",
+        ".js",
+        ".class",
+        ".java"
+      ],
+      "correct_answer": 2,
+      "explanation": "Java source code files (.java) are compiled into bytecode files, which have the **.class** extension. These bytecode files are then executed by the Java Virtual Machine (JVM)."
+    },
+    {
+      "id": 9,
+      "question": "What is the range of short data type in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "-128 to 127",
+        "-32768 to 32767",
+        "-2147483648 to 2147483647",
+        "None of the mentioned"
+      ],
+      "correct_answer": 1,
+      "explanation": "The **short** data type in Java is a 16-bit signed two's complement integer. This means it can represent $2^{16}$ unique values, ranging from $-2^{15}$ to $2^{15}-1$, which is **-32768 to 32767**."
+    },
+    {
+      "id": 10,
+      "question": "What is the primary function of the Math.max(x, y) method?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "To find the lowest value of x and y.",
+        "To find the highest value of x and y.",
+        "To calculate the average of x and y.",
+        "To round x and y to the nearest integer."
+      ],
+      "correct_answer": 1,
+      "explanation": "The **Math.max(x, y)** method in Java is used to return the greater (highest) of the two arguments, which can be of types **int**, **long**, **float**, or **double**."
+    },
+    {
+      "id": 11,
+      "question": "What will be the result of Math.min(5, 10)?",
+      "code_snippet": "Math.min(5, 10);",
+      "language": "Java",
+      "options": [
+        "5",
+        "10",
+        "15",
+        "0"
+      ],
+      "correct_answer": 0,
+      "explanation": "The **Math.min(x, y)** method in Java is used to return the smaller (lowest) of the two arguments. In this case, 5 is less than 10, so the result is 5."
+    },
+    {
+      "id": 12,
+      "question": "What is the result of the following Java method call?",
+      "code_snippet": "Math.sqrt(64);",
+      "language": "Java",
+      "options": [
+        "32",
+        "8",
+        "4096.0",
+        "8.0"
+      ],
+      "correct_answer": 3,
+      "explanation": "The **Math.sqrt()** method in Java returns the square root of a number. The square root of 64 is 8."
+    },
+    {
+      "id": 13,
+      "question": "What is the result of the following Java method call?",
+      "code_snippet": "Math.abs(-5.6);",
+      "language": "Java",
+      "options": [
+        "5.0",
+        "-5.6",
+        "5.6",
+        "0.0"
+      ],
+      "correct_answer": 2,
+      "explanation": "The **Math.abs()** method in Java returns the absolute (positive) value of a number. The absolute value of -5.6 is 5.6."
+    },
+    {
+      "id": 14,
+      "question": "The Java method Math.pow(a, b) returns which data type?",
+      "code_snippet": "Math.pow(a, b);",
+      "language": "Java",
+      "options": [
+        "double",
+        "int",
+        "float",
+        "long"
+      ],
+      "correct_answer": 0,
+      "explanation": "The **Math.pow(a, b)** method in Java is used to calculate $a^b$ (a raised to the power of b). The return type of this method is always a **double**, even if the arguments provided are integers."
+    },
+    {
+      "id": 15,
+      "question": "What is the result of the following Java method call?",
+      "code_snippet": "Math.pow(2, 8);",
+      "language": "Java",
+      "options": [
+        "64",
+        "64.0",
+        "256",
+        "256.0"
+      ],
+      "correct_answer": 3,
+      "explanation": "The **Math.pow(a, b)** method calculates $a^b$. Here, $2^8 = 256$. Since **Math.pow** always returns a **double** type, the result is **256.0**."
+    },
+    {
+      "id": 16,
+      "question": "Which can be a possible value of Math.random()?",
+      "code_snippet": "Math.random();",
+      "language": "Java",
+      "options": [
+        "10",
+        "-1",
+        "0.9069269433908016",
+        "100000010"
+      ],
+      "correct_answer": 2,
+      "explanation": "The **Math.random()** method in Java returns a **double** value that is greater than or equal to **0.0** and strictly less than **1.0** (i.e., in the range $[0.0, 1.0)$). The value **0.9069269433908016** fits this range."
+    },
+    {
+      "id": 17,
+      "question": "The Java method Math.random() returns which data type?",
+      "code_snippet": "Math.random();",
+      "language": "Java",
+      "options": [
+        "int",
+        "long",
+        "float",
+        "double"
+      ],
+      "correct_answer": 3,
+      "explanation": "The **Math.random()** method in Java returns a pseudo-random number of type **double** that is greater than or equal to **0.0** and less than **1.0**."
+    },
+    {
+      "id": 18,
+      "question": "Choose the correct method to return the smallest value.",
+      "code_snippet": "int result = Math._______(5, 10);",
+      "language": "Java",
+      "options": [
+        "max",
+        "min",
+        "sqrt",
+        "abs"
+      ],
+      "correct_answer": 1,
+      "explanation": "The **Math.min(x, y)** method is used to return the smallest (lowest) of the two values provided. **Math.max** returns the largest, **Math.sqrt** returns the square root, and **Math.abs** returns the absolute value."
+    },
+    {
+      "id": 19,
+      "question": "What will be the output of the following Java code?",
+      "code_snippet": "System.out.println('Z' + 32);",
+      "language": "Java",
+      "options": [
+        "z",
+        "Z",
+        "122",
+        "154"
+      ],
+      "correct_answer": 2,
+      "explanation": "In Java, when an arithmetic operation (like addition) is performed between a **char** ('Z') and an **int** (32), the **char** is implicitly promoted to its corresponding **ASCII/Unicode integer value** before the calculation takes place. The ASCII value of 'Z' is 90. Therefore, the operation becomes $90 + 32 = 122$, which is then printed."
+    },
+    {
+      "id": 20,
+      "question": "Character class methods are found in the package called:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "java.util",
+        "java.lang",
+        "java.awt",
+        "java.io"
+      ],
+      "correct_answer": 1,
+      "explanation": "The **Character** class, along with fundamental classes like **String**, **Integer**, **System**, and **Math**, belongs to the **java.lang** package. This package is so fundamental that it is **automatically imported** into every Java program."
+    },
+    {
+      "id": 21,
+      "question": "The Character class in Java is considered a wrapper class. This statement is:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correct_answer": 0,
+      "explanation": "The **Character** class is one of the nine wrapper classes in Java. Its purpose is to 'wrap' the primitive data type **char** into an object, allowing the primitive value to be treated as an object. This is necessary for using **char** values in collections (like ArrayList) and accessing useful constant fields and methods (like `isDigit()`, `toUpperCase()`) that operate on the character value."
+    },
+    {
+      "id": 22,
+      "question": "The Character class in Java encapsulates which primitive data type?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "int",
+        "char",
+        "double",
+        "String"
+      ],
+      "correct_answer": 1,
+      "explanation": "The **Character** class is a wrapper class that encapsulates, or 'wraps,' the primitive data type **char** into an object. This allows a **char** value to be used where an object is required, such as in Java Collections."
+    },
+    {
+      "id": 23,
+      "question": "The array declared as `double x[] = {2.5, 4.5, 5.5, 6.4};` occupies __________ bytes for its data elements.",
+      "code_snippet": "double x[] = {2.5, 4.5, 5.5, 6.4};",
+      "language": "Java",
+      "options": [
+        "16",
+        "4",
+        "8",
+        "32"
+      ],
+      "correct_answer": 3,
+      "explanation": "In Java, a **double** data type occupies **8 bytes** of memory. Since the array contains 4 double elements, the total memory occupied by the elements is $4 \times 8 = 32$ bytes."
+    },
+    {
+      "id": 24,
+      "question": "'double' is a _______ datatype in Java.",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "primitive",
+        "non-primitive"
+      ],
+      "correct_answer": 0,
+      "explanation": "In Java, **primitive** data types include **byte**, **short**, **int**, **long**, **float**, **double**, **boolean**, and **char**. **Non-primitive** (or reference) data types are types like **String**, arrays, and user-defined classes/interfaces."
+    },
+    {
+      "id": 25,
+      "question": "Which of the following is the wrapper class for the 'double' primitive data type in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Float",
+        "Double",
+        "Int",
+        "String"
+      ],
+      "correct_answer": 1,
+      "explanation": "The wrapper class for the primitive data type **double** is **Double**. Wrapper classes are used to 'wrap' primitive values into objects, enabling them to be used in contexts like Java Collections, where objects are required."
+    },
+    {
+      "id": 26,
+      "question": "The output of 42/6%2 is:",
+      "code_snippet": "42/6%2",
+      "language": "Java",
+      "options": [
+        "1",
+        "10",
+        "2",
+        "0"
+      ],
+      "correct_answer": 0,
+      "explanation": "In Java, the division (/) and modulo (%) operators have the same precedence and are evaluated from left to right. First, $42 / 6$ is calculated, which equals $7$. Then, $7 % 2$ is calculated, which is the remainder of $7$ divided by $2$, resulting in $1$."
+    },
+    {
+      "id": 27,
+      "question": "Operators with higher precedence are evaluated _______ operators with lower precedence.",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "before",
+        "after",
+        "at the same time",
+        "randomly"
+      ],
+      "correct_answer": 0,
+      "explanation": "In any programming language, **operator precedence** determines the order in which operators in an expression are grouped and evaluated. Operators with a **higher precedence** are always evaluated **before** those with a lower precedence."
+    },
+    {
+      "id": 28,
+      "question": "When operators have the same precedence, their _______ determines the order of evaluation.",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "cardinality",
+        "modularity",
+        "popularity",
+        "associativity"
+      ],
+      "correct_answer": 3,
+      "explanation": "When two operators of the same precedence appear in an expression (like multiplication '*' and division '/'), their **associativity** (left-to-right or right-to-left) is used to decide the order of operation. For example, the arithmetic operators $+, -, *, /,%$ are **left-associative**, meaning they are evaluated from left to right."
+    },
+    {
+      "id": 29,
+      "question": "Most Java operators evaluate from which direction?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "left to right",
+        "right to left",
+        "top to bottom",
+        "bottom to top"
+      ],
+      "correct_answer": 0,
+      "explanation": "Most Java operators, including all binary arithmetic ($+, -, *, /, %) and relational operators ($<, >, ==$), are **left-associative** (evaluate from left to right). However, there are exceptions, such as the assignment operator ($=$), unary operators ($++, --$), and the conditional operator ($?:$), which are **right-associative** (evaluate from right to left)."
+    },
+    {
+      "id": 30,
+      "question": "The ternary operator (`? :`) in Java is evaluated from which direction?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "top to bottom",
+        "bottom to top",
+        "left to right",
+        "right to left"
+      ],
+      "correct_answer": 3,
+      "explanation": "The ternary operator (`? :`) is one of the few operators in Java that is **right-associative**, meaning it is evaluated from **right to left**. This is generally true for all assignment operators (`=`, `+=`, etc.) and the unary operators (`++`, `!`, etc.) as well."
+    }
+  ]
+}
