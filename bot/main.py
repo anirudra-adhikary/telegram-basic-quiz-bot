@@ -6,12 +6,15 @@ import random
 from dotenv import load_dotenv
 from telegram import Update, Poll
 from telegram.constants import ParseMode
+from telegram.error import NetworkError, TimedOut, BadRequest
+from telegram.request import HTTPXRequest  # Import HTTPXRequest for timeout config
 from telegram.ext import (
     Application,
     CommandHandler,
     ContextTypes,
     PollAnswerHandler,
     CallbackContext,
+    PicklePersistence
 )
 
 # --- Configuration ---
@@ -24,6 +27,80 @@ load_dotenv()  # Load environment variables from .env file
 
 # --- Bot Handlers ---
 
+async def competitive(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Starts a new quiz in the group chat, only if initiated by an admin."""
+    chat = update.effective_chat
+    user = update.effective_user
+
+    if not user or not chat:
+        logger.warning("Could not get user or chat from update.")
+        return
+        
+    # --- Admin Check Logic ---
+    if chat.type == 'private':
+        await update.message.reply_text("This command only works in groups! 😅")
+        return
+
+    try:
+        chat_member = await context.bot.get_chat_member(chat_id=chat.id, user_id=user.id)
+    except Exception as e:
+        logger.error(f"Error checking chat member status: {e}")
+        await update.message.reply_text("I couldn't check your permissions. 😬\nMake sure I have admin rights to see other members.")
+        return
+
+    if chat_member.status not in ['administrator', 'creator']:
+        await update.message.reply_text("Sorry, only group admins can start a quiz! ⛔️")
+        return
+        
+    logger.info(f"Admin check passed for user {user.id} in chat {chat.id}. Starting quiz...")
+    # --- End Admin Check Logic ---
+
+    chat_id = update.effective_chat.id
+    active_quiz_key = f'active_quiz_{chat_id}'
+    
+    if context.bot_data.get(active_quiz_key, {}).get('quiz_active', False):
+        await update.message.reply_text(
+            "A quiz is already in progress in this group! 😮\n"
+            "Wait for it to finish before starting a new one."
+        )
+        return
+
+    try:
+        with open('questions_competive.json', 'r', encoding="utf-8") as f:
+            questions_data = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        logger.error(f"Error loading questions: {e}")
+        await update.message.reply_text("❌ Sorry, I couldn't load the quiz questions right now.")
+        return
+
+    all_questions = questions_data.get("questions", [])
+    QUIZ_LENGTH = 10
+    
+    if len(all_questions) < QUIZ_LENGTH:
+        await update.message.reply_text(f"❌ Not enough questions in the database. Need at least {QUIZ_LENGTH}.")
+        return
+
+    selected_questions = random.sample(all_questions, QUIZ_LENGTH)
+    
+    quiz_data = {
+        'quiz_questions': selected_questions,
+        'current_question_index': 0,
+        'scores': {},
+        'quiz_active': True,
+        'chat_id': chat_id
+    }
+    
+    context.bot_data[active_quiz_key] = quiz_data
+
+    await update.message.reply_text(
+        f"🎯 **Quiz Started!**\n\n"
+        f"• {QUIZ_LENGTH} random questions\n"
+        "• 45 seconds per question\n\n"
+        "Good luck! 🍀",
+        parse_mode='Markdown'
+    )
+
+    await send_next_question(context, quiz_data)
 
 #python quiz
 async def python(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -36,13 +113,10 @@ async def python(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         return
         
     # --- Admin Check Logic ---
-    
-    # 1. Check if we are in a group or supergroup
     if chat.type == 'private':
         await update.message.reply_text("This command only works in groups! 😅")
-        return # Stop execution
+        return
 
-    # 2. Get the user's status in the group
     try:
         chat_member = await context.bot.get_chat_member(chat_id=chat.id, user_id=user.id)
     except Exception as e:
@@ -50,18 +124,16 @@ async def python(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         await update.message.reply_text("I couldn't check your permissions. 😬\nMake sure I have admin rights to see other members.")
         return
 
-    # 3. Check if the status is 'administrator' or 'creator'
     if chat_member.status not in ['administrator', 'creator']:
         await update.message.reply_text("Sorry, only group admins can start a quiz! ⛔️")
-        return # Stop execution if not an admin
+        return
         
     logger.info(f"Admin check passed for user {user.id} in chat {chat.id}. Starting quiz...")
     # --- End Admin Check Logic ---
 
     chat_id = update.effective_chat.id
-
-    # Check if quiz is already active using bot_data
     active_quiz_key = f'active_quiz_{chat_id}'
+    
     if context.bot_data.get(active_quiz_key, {}).get('quiz_active', False):
         await update.message.reply_text(
             "A quiz is already in progress in this group! 😮\n"
@@ -70,7 +142,7 @@ async def python(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         return
 
     try:
-        with open('questions_python.json', 'r') as f:
+        with open('questions_python.json', 'r', encoding="utf-8") as f:
             questions_data = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError) as e:
         logger.error(f"Error loading questions: {e}")
@@ -78,8 +150,7 @@ async def python(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         return
 
     all_questions = questions_data.get("questions", [])
-    
-    QUIZ_LENGTH = 10
+    QUIZ_LENGTH = 15
     
     if len(all_questions) < QUIZ_LENGTH:
         await update.message.reply_text(f"❌ Not enough questions in the database. Need at least {QUIZ_LENGTH}.")
@@ -87,7 +158,6 @@ async def python(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
     selected_questions = random.sample(all_questions, QUIZ_LENGTH)
     
-    # Store quiz data in bot_data for global access
     quiz_data = {
         'quiz_questions': selected_questions,
         'current_question_index': 0,
@@ -96,18 +166,16 @@ async def python(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         'chat_id': chat_id
     }
     
-    # Store in bot_data (our single source of truth)
     context.bot_data[active_quiz_key] = quiz_data
 
     await update.message.reply_text(
         f"🎯 **Quiz Started!**\n\n"
         f"• {QUIZ_LENGTH} random questions\n"
-        "• 30 seconds per question\n\n"
+        "• 45 seconds per question\n\n"
         "Good luck! 🍀",
         parse_mode='Markdown'
     )
 
-    # Manually pass the quiz_data to the first call
     await send_next_question(context, quiz_data)
 
 
@@ -122,13 +190,10 @@ async def java(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         return
         
     # --- Admin Check Logic ---
-    
-    # 1. Check if we are in a group or supergroup
     if chat.type == 'private':
         await update.message.reply_text("This command only works in groups! 😅")
-        return # Stop execution
+        return
 
-    # 2. Get the user's status in the group
     try:
         chat_member = await context.bot.get_chat_member(chat_id=chat.id, user_id=user.id)
     except Exception as e:
@@ -136,18 +201,16 @@ async def java(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         await update.message.reply_text("I couldn't check your permissions. 😬\nMake sure I have admin rights to see other members.")
         return
 
-    # 3. Check if the status is 'administrator' or 'creator'
     if chat_member.status not in ['administrator', 'creator']:
         await update.message.reply_text("Sorry, only group admins can start a quiz! ⛔️")
-        return # Stop execution if not an admin
+        return
         
     logger.info(f"Admin check passed for user {user.id} in chat {chat.id}. Starting quiz...")
     # --- End Admin Check Logic ---
 
     chat_id = update.effective_chat.id
-
-    # Check if quiz is already active using bot_data
     active_quiz_key = f'active_quiz_{chat_id}'
+    
     if context.bot_data.get(active_quiz_key, {}).get('quiz_active', False):
         await update.message.reply_text(
             "A quiz is already in progress in this group! 😮\n"
@@ -156,7 +219,7 @@ async def java(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         return
 
     try:
-        with open('questions_java.json', 'r') as f:
+        with open('questions_java.json', 'r', encoding="utf-8") as f:
             questions_data = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError) as e:
         logger.error(f"Error loading questions: {e}")
@@ -164,16 +227,14 @@ async def java(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         return
 
     all_questions = questions_data.get("questions", [])
-    
-    QUIZ_LENGTH = 3
-    
+    QUIZ_LENGTH = 20
+
     if len(all_questions) < QUIZ_LENGTH:
         await update.message.reply_text(f"❌ Not enough questions in the database. Need at least {QUIZ_LENGTH}.")
         return
 
     selected_questions = random.sample(all_questions, QUIZ_LENGTH)
     
-    # Store quiz data in bot_data for global access
     quiz_data = {
         'quiz_questions': selected_questions,
         'current_question_index': 0,
@@ -182,62 +243,80 @@ async def java(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         'chat_id': chat_id
     }
     
-    # Store in bot_data (our single source of truth)
     context.bot_data[active_quiz_key] = quiz_data
 
     await update.message.reply_text(
         f"🎯 **Quiz Started!**\n\n"
         f"• {QUIZ_LENGTH} random questions\n"
-        "• 30 seconds per question\n\n"
+        "• 45 seconds per question\n\n"
         "Good luck! 🍀",
         parse_mode='Markdown'
     )
 
-    # Manually pass the quiz_data to the first call
     await send_next_question(context, quiz_data)
 
 async def send_next_question(context: CallbackContext, quiz_data=None) -> None:
     """Sends the next question (and code snippet, if any) or ends the quiz."""
+    
     if quiz_data is None:
-        logger.warning("send_next_question called without quiz_data (likely from job). This should be handled by the callback.")
+        logger.warning("send_next_question called without quiz_data")
         return
         
-    if not quiz_data:
-        logger.warning("No quiz data found in send_next_question")
-        return
-
     chat_id = quiz_data.get('chat_id')
     current_index = quiz_data.get('current_question_index', 0)
     questions = quiz_data.get('quiz_questions', [])
     active_quiz_key = f'active_quiz_{chat_id}'
     
-    logger.info(f"Current question index: {current_index}, Total questions: {len(questions)}")
-
     if current_index >= len(questions):
         logger.info(f"Quiz completed! Ending quiz for chat {chat_id}")
         await end_quiz(context, quiz_data)
         return
 
     question_data = questions[current_index]
+    db_id = question_data.get("id", "Unknown ID") 
+    quiz_length = len(questions)
     
-    # Debug: Log the question and correct answer
-    logger.info(f"Sending question {current_index + 1}: {question_data['question']}")
-    logger.info(f"Correct answer index: {question_data['correct_answer']}")
+    # --- 1. PRE-VALIDATION ---
+    # Telegram Limit: Poll options must be <= 100 chars
+    options = question_data["options"]
+    for i, option in enumerate(options):
+        if len(option) > 100:
+            logger.error(f"⚠️ Question DB ID {db_id} skipped: Option {i+1} is too long ({len(option)} chars). Max is 100.")
+            
+            # Skip this question immediately
+            quiz_data['current_question_index'] = current_index + 1
+            context.bot_data[active_quiz_key] = quiz_data
+            
+            # Trigger next question immediately
+            context.job_queue.run_once(
+                lambda ctx: ctx.application.create_task(send_next_question_callback(ctx, chat_id)), 
+                1
+            )
+            return
+
+    # Telegram Limit: Poll question must be <= 300 chars
+    TELEGRAM_POLL_QUESTION_LIMIT = 300 
+    prefix = f"Question {current_index + 1}/{quiz_length}: "
+    full_question_text = f"{prefix}{question_data['question']}"
+    
+    if len(full_question_text) > TELEGRAM_POLL_QUESTION_LIMIT:
+        logger.error(f"⚠️ Question DB ID {db_id} skipped: Question text too long.")
+        # Skip logic (same as above)
+        quiz_data['current_question_index'] = current_index + 1
+        context.bot_data[active_quiz_key] = quiz_data
+        context.job_queue.run_once(
+            lambda ctx: ctx.application.create_task(send_next_question_callback(ctx, chat_id)), 
+            1
+        )
+        return
+
+    logger.info(f"Sending question {current_index + 1} (DB ID: {db_id})")
     
     try:
-        # --- NEW CODE BLOCK ---
-        # Check if there is a code snippet and send it first
+        # --- Code Snippet Logic (Unchanged) ---
         if "code_snippet" in question_data and question_data["code_snippet"]:
             code = question_data["code_snippet"]
-            lang = question_data.get("language", "") # Get language, default to empty string
-            
-            # Format the code for Telegram's Markdown
-            # We use MarkdownV2, which requires escaping, but is safer for code
-            # Note: The code itself should not contain special markdown chars
-            # or they must be escaped.
-            # For simplicity, we'll just wrap it.
-            # A more robust solution would escape characters, but let's try this first.
-            
+            lang = question_data.get("language", "")
             formatted_code_text = f"```{lang}\n{code}\n```"
             
             try:
@@ -246,49 +325,77 @@ async def send_next_question(context: CallbackContext, quiz_data=None) -> None:
                     text=formatted_code_text,
                     parse_mode=ParseMode.MARKDOWN_V2
                 )
-            except Exception as md_e:
-                logger.warning(f"MarkdownV2 failed ({md_e}), trying plain text...")
-                # Fallback to plain text if Markdown fails
+            except Exception:
                 await context.bot.send_message(
                     chat_id=chat_id,
                     text=f"Code:\n{code}"
                 )
-        # --- END NEW CODE BLOCK ---
+
+        ANSWER_TIME = 45          
+        NEXT_QUESTION_DELAY = 30  
 
         message = await context.bot.send_poll(
             chat_id=chat_id,
-            question=f"Question {current_index + 1}/{len(questions)}: {question_data['question']}",
-            options=question_data["options"],
+            question=full_question_text,
+            options=options,
             type=Poll.QUIZ,
             correct_option_id=question_data["correct_answer"],
-            # explanation = question_data["explanation"],
             is_anonymous=False,
-            open_period=30
+            open_period=ANSWER_TIME 
         )
         
-        # Store poll info in bot_data for the answer handler
         context.bot_data[message.poll.id] = {
             "chat_id": chat_id,
             "correct_answer": question_data["correct_answer"],
             "poll_id": message.poll.id
         }
         
-        # Update the current question index in quiz_data
+        # --- SUCCESS ---
         quiz_data['current_question_index'] = current_index + 1
-        
-        # Update bot_data (our single source of truth)
         context.bot_data[active_quiz_key] = quiz_data
         
-        logger.info(f"Question {current_index + 1} sent successfully. Next index: {quiz_data['current_question_index']}")
-        
-        # Schedule next question
+        is_last_question = (current_index + 1) == quiz_length
+        delay = ANSWER_TIME + 1 if is_last_question else NEXT_QUESTION_DELAY
+
         context.job_queue.run_once(
             lambda ctx: ctx.application.create_task(send_next_question_callback(ctx, chat_id)), 
-            31  # Give a 1-second buffer after the poll closes
+            delay
+        )
+        
+    # --- 2. SPECIFIC ERROR HANDLING ---
+    except BadRequest as e:
+        # This catches "Poll options length must not exceed 100" and other data errors
+        logger.error(f"❌ Telegram Bad Request for Q{current_index + 1} (DB ID: {db_id}): {e}")
+        await context.bot.send_message(chat_id=chat_id, text="⚠️ Skipping a question due to format error (Option too long).")
+        
+        # Skip, DO NOT RETRY
+        quiz_data['current_question_index'] = current_index + 1
+        context.bot_data[active_quiz_key] = quiz_data
+        context.job_queue.run_once(
+            lambda ctx: ctx.application.create_task(send_next_question_callback(ctx, chat_id)), 
+            2
+        )
+
+    except (NetworkError, TimedOut) as net_err:
+        # This is for ACTUAL network issues
+        logger.warning(f"⚠️ Network connection lost while sending Q{current_index+1}. Retrying... Error: {net_err}")
+        
+        # Retry logic
+        context.job_queue.run_once(
+            lambda ctx: ctx.application.create_task(send_next_question_callback(ctx, chat_id)), 
+            5 
         )
         
     except Exception as e:
-        logger.error(f"Error sending poll or code snippet: {e}")
+        logger.error(f"General Error sending question {current_index + 1}: {e}")
+        # Skip
+        quiz_data['current_question_index'] = current_index + 1
+        context.bot_data[active_quiz_key] = quiz_data
+        context.job_queue.run_once(
+            lambda ctx: ctx.application.create_task(send_next_question_callback(ctx, chat_id)), 
+            1
+        )
+
 
 async def send_next_question_callback(context: CallbackContext, chat_id: int) -> None:
     """Callback for the job queue to send the next question."""
@@ -297,7 +404,6 @@ async def send_next_question_callback(context: CallbackContext, chat_id: int) ->
     quiz_data = context.bot_data.get(active_quiz_key)
     
     if quiz_data and quiz_data.get('quiz_active', False):
-        # Pass the quiz_data explicitly
         await send_next_question(context, quiz_data)
     else:
         logger.warning(f"No active quiz found for chat {chat_id} in callback, or quiz is inactive.")
@@ -316,40 +422,31 @@ async def handle_poll_answer(update: Update, context: ContextTypes.DEFAULT_TYPE)
     chat_id = quiz_info["chat_id"]
     correct_answer_id = quiz_info["correct_answer"]
     
-    # Get quiz data from bot_data
     active_quiz_key = f'active_quiz_{chat_id}'
     quiz_data = context.bot_data.get(active_quiz_key, {})
     
     if not quiz_data.get('quiz_active', False):
-        # This can happen if an answer comes in after the quiz has ended
         logger.warning(f"Received answer for inactive quiz. Chat_id: {chat_id}")
         return
 
     selected_option_ids = poll_answer.option_ids
     
-    # Debug logging
     logger.info(f"User {user.first_name} selected option: {selected_option_ids}, correct answer: {correct_answer_id}")
     
-    # Check if the user selected the correct option
     if selected_option_ids and selected_option_ids[0] == correct_answer_id:
         user_id = user.id
-        # Initialize user score if not exists
         if user_id not in quiz_data['scores']:
             quiz_data['scores'][user_id] = {'name': user.first_name, 'score': 0}
         
-        # Update score
         quiz_data['scores'][user_id]['score'] += 1
         
-        # Update bot_data
         context.bot_data[active_quiz_key] = quiz_data
         
         logger.info(f"User {user.first_name} ({user_id}) answered correctly. New score: {quiz_data['scores'][user_id]['score']}")
     else:
-        # Ensure user exists in scores even if they answered wrong (for scoreboard)
         user_id = user.id
         if user_id not in quiz_data['scores']:
             quiz_data['scores'][user_id] = {'name': user.first_name, 'score': 0}
-            # Update bot_data
             context.bot_data[active_quiz_key] = quiz_data
         logger.info(f"User {user.first_name} ({user_id}) answered incorrectly.")
 
@@ -358,7 +455,6 @@ def format_scoreboard(scores: dict) -> str:
     if not scores:
         return "🏁 **Quiz Over!**\n\nNo one answered correctly. Better luck next time!"
 
-    # Filter out users with 0 points for final scoreboard
     users_with_points = {uid: data for uid, data in scores.items() if data['score'] > 0}
     
     if not users_with_points:
@@ -383,8 +479,6 @@ def format_scoreboard(scores: dict) -> str:
 async def end_quiz(context: CallbackContext, quiz_data=None) -> None:
     """Ends the quiz and displays the scoreboard."""
     if quiz_data is None:
-        # This should ideally not be called without quiz_data
-        # If it is, we have to find it, but it's risky
         logger.error("end_quiz called without quiz_data!")
         return
     
@@ -394,16 +488,17 @@ async def end_quiz(context: CallbackContext, quiz_data=None) -> None:
     chat_id = quiz_data.get('chat_id')
     result_text = format_scoreboard(quiz_data.get('scores', {}))
     
-    await context.bot.send_message(
-        chat_id=chat_id,
-        text=result_text,
-        parse_mode='Markdown'
-    )
+    try:
+        await context.bot.send_message(
+            chat_id=chat_id,
+            text=result_text,
+            parse_mode='Markdown'
+        )
+    except Exception as e:
+        logger.error(f"Failed to send scoreboard due to network/error: {e}")
     
-    # Clean up
     active_quiz_key = f'active_quiz_{chat_id}'
     if active_quiz_key in context.bot_data:
-        # Keep scores but mark quiz as inactive
         quiz_data['quiz_active'] = False
         context.bot_data[active_quiz_key] = quiz_data
         
@@ -416,11 +511,9 @@ async def scoreboard(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
     quiz_data = context.bot_data.get(active_quiz_key, {})
     
     if quiz_data.get('quiz_active', False):
-        # Show current scores during active quiz
         scores = quiz_data.get('scores', {})
         if scores:
             result_text = "📊 **Current Scores** 📊\n\n"
-            # Show all users, even with 0 points during active quiz
             sorted_scores = sorted(scores.values(), key=lambda x: x['score'], reverse=True)
             for i, user_data in enumerate(sorted_scores):
                 rank_emoji = ""
@@ -435,15 +528,47 @@ async def scoreboard(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
         else:
             await update.message.reply_text("No scores yet! The quiz is still in progress.")
     else:
-        # This is the 'quiz is finished' case
-        # We read from bot_data, which holds the last quiz state
-        scores = quiz_data.get('scores', {}) # quiz_data is already from bot_data
+        scores = quiz_data.get('scores', {}) 
         if scores:
             result_text = format_scoreboard(scores)
             await update.message.reply_text(result_text, parse_mode='Markdown')
         else:
             await update.message.reply_text("No quiz has been completed yet.")
 
+async def stop_quiz(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Stops the current quiz immediately."""
+    chat = update.effective_chat
+    user = update.effective_user
+
+    if not user or not chat:
+        return
+
+    # --- Admin Check Logic ---
+    if chat.type == 'private':
+        await update.message.reply_text("This command only works in groups!")
+        return
+
+    try:
+        chat_member = await context.bot.get_chat_member(chat_id=chat.id, user_id=user.id)
+    except Exception as e:
+        logger.error(f"Error checking chat member status: {e}")
+        return
+
+    if chat_member.status not in ['administrator', 'creator']:
+        await update.message.reply_text("Sorry, only group admins can stop the quiz! ⛔️")
+        return
+    # --- End Admin Check Logic ---
+
+    chat_id = update.effective_chat.id
+    active_quiz_key = f'active_quiz_{chat_id}'
+    quiz_data = context.bot_data.get(active_quiz_key)
+
+    if quiz_data and quiz_data.get('quiz_active', False):
+        await update.message.reply_text("🛑 Quiz stopped by admin.")
+        # end_quiz handles setting quiz_active = False and showing the final scoreboard
+        await end_quiz(context, quiz_data)
+    else:
+        await update.message.reply_text("There is no active quiz to stop.")
 
 # --- Main Application Logic ---
 
@@ -453,19 +578,26 @@ def main() -> None:
     if not TOKEN:
         raise ValueError("Please set the BOT_TOKEN environment variable in the .env file.")
 
-    application = Application.builder().token(TOKEN).build()
+    # --- PERSISTENCE SETUP (Data saved to quiz_bot_data.pickle) ---
+    my_persistence = PicklePersistence(filepath='quiz_bot_data.pickle')
 
-    #java quiz
+    # --- NETWORK REQUEST SETUP ---
+    # Create the request object with the custom timeouts here
+    request = HTTPXRequest(connect_timeout=30, read_timeout=30)
+
+    # Pass the request object to the builder
+    application = Application.builder().token(TOKEN).persistence(my_persistence).request(request).build()
+
     application.add_handler(CommandHandler("java", java))
     application.add_handler(CommandHandler("scoreboard", scoreboard))
-    # application.add_handler(CommandHandler("stopquiz", end_quiz(context, quiz_data)))
-    
     application.add_handler(PollAnswerHandler(handle_poll_answer))
-
-    #python quiz
     application.add_handler(CommandHandler("python", python))
+    application.add_handler(CommandHandler("competitive", competitive))
+    application.add_handler(CommandHandler("kill", stop_quiz))
 
     logger.info("Starting bot...")
+    
+    # Run polling without arguments (timeouts are handled by HTTPXRequest now)
     application.run_polling()
 
 if __name__ == "__main__":
