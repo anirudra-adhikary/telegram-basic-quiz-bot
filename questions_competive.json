@@ -1,0 +1,684 @@
+{
+  "questions": [
+    {
+    "id": 1,
+    "question": "From which country has India mainly borrowed the Parliamentary system of government?",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["USA", "UK", "Canada", "France"],
+    "correct_answer": 1
+    },
+    {
+    "id": 2,
+    "question": "Bicameralism (Lok Sabha and Rajya Sabha) in India is borrowed from the constitution of:",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["Australia", "Germany", "United Kingdom", "South Africa"],
+    "correct_answer": 2
+    },
+    {
+    "id": 3,
+    "question": "The concept of Rule of Law in the Indian Constitution is inspired by the constitution of:",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["USA", "Ireland", "United Kingdom", "France"],
+    "correct_answer": 2
+    },
+    {
+    "id": 4,
+    "question": "Single citizenship in India has been adopted from the constitution of:",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["Canada", "USA", "France", "United Kingdom"],
+    "correct_answer": 3
+    },
+    {
+    "id": 5,
+    "question": "The Cabinet system in India is based on the constitutional practice of:",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["USA", "Japan", "United Kingdom", "Australia"],
+    "correct_answer": 2
+    },
+    {
+    "id": 6,
+    "question": "The concept of Parliamentary privileges in India is taken from the:",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["Irish Constitution", "British Constitution", "US Constitution", "Canadian Constitution"],
+    "correct_answer": 1
+    },
+    {
+    "id": 7,
+    "question": "Prerogative writs such as habeas corpus and mandamus in India are borrowed from the:",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["US Constitution", "British Constitution", "French Constitution", "Australian Constitution"],
+    "correct_answer": 1
+    },
+    {
+    "id": 8,
+    "question": "The Fundamental Rights in the Indian Constitution are inspired by the Constitution of:",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["USA", "UK", "Japan", "South Africa"],
+    "correct_answer": 0
+    },
+    {
+    "id": 9,
+    "question": "Which of the following features of the Indian Constitution is NOT borrowed from the US Constitution?",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["Judicial review", "Independence of judiciary", "Parliamentary system", "Impeachment of the President"],
+    "correct_answer": 2
+    },
+    {
+    "id": 10,
+    "question": "The idea of a written Constitution, as adopted in India, is mainly derived from:",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["United Kingdom", "United States of America", "Canada", "Ireland"],
+    "correct_answer": 1
+    },
+    {
+    "id": 11,
+    "question": "The Preamble to the Indian Constitution is greatly influenced by the Preamble of the:",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["US Constitution", "UK Constitution", "Australian Constitution", "French Constitution"],
+    "correct_answer": 0
+    },
+    {
+    "id": 12,
+    "question": "The office of the President and Vice-President in India is modeled on the Constitution of:",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["Canada", "USA", "UK", "France"],
+    "correct_answer": 1
+    },
+    {
+    "id": 13,
+    "question": "The procedure for impeachment of the President of India is borrowed from the:",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["US Constitution", "British Constitution", "Canadian Constitution", "Irish Constitution"],
+    "correct_answer": 0
+    },
+    {
+    "id": 14,
+    "question": "Removal of Supreme Court and High Court judges in India follows the pattern of which country’s constitution?",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["USA", "UK", "Canada", "Australia"],
+    "correct_answer": 0
+    },
+    {
+    "id": 15,
+    "question": "The doctrine of separation of powers in the Indian system is inspired from the constitution of:",
+    "code_snippet": null,
+    "language": "General Knowledge / Civics",
+    "options": ["USA", "UK", "Ireland", "France"],
+    "correct_answer": 0
+    },
+    {
+      "id": 16,
+      "question": "The federal structure with a strong Centre in India has been adopted from:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["USA", "Canada", "Australia", "Germany"],
+      "correct_answer": 1
+    },
+    {
+      "id": 17,
+      "question": "Vesting of residuary powers in the Centre in India is borrowed from the Constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["USA", "Canada", "France", "South Africa"],
+      "correct_answer": 1
+    },
+    {
+      "id": 18,
+      "question": "The appointment of Governors by the Centre is a feature taken from the Constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Canada", "USA", "UK", "Ireland"],
+      "correct_answer": 0
+    },
+    {
+      "id": 19,
+      "question": "The advisory jurisdiction of the Supreme Court of India resembles that of the Supreme Court of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["USA", "Canada", "Japan", "South Africa"],
+      "correct_answer": 1
+    },
+    {
+      "id": 20,
+      "question": "The quasi-federal nature of the Indian Constitution is most closely comparable to the constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["USA", "Canada", "UK", "France"],
+      "correct_answer": 1
+    },
+    {
+      "id": 21,
+      "question": "Fundamental Duties in the Indian Constitution are inspired by the constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["USA", "USSR (Soviet Union)", "UK", "Japan"],
+      "correct_answer": 1
+    },
+    {
+      "id": 22,
+      "question": "The ideals of social, economic and political justice in the Preamble are borrowed from the constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["France", "USSR (Soviet Union)", "USA", "Ireland"],
+      "correct_answer": 1
+    },
+    {
+      "id": 23,
+      "question": "The concept of Concurrent List in the Indian Constitution is borrowed from:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["USA", "Australia", "Canada", "South Africa"],
+      "correct_answer": 1
+    },
+    {
+      "id": 24,
+      "question": "Freedom of trade, commerce and intercourse within the country is a feature taken from the constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Australia", "USA", "UK", "Japan"],
+      "correct_answer": 0
+    },
+    {
+      "id": 25,
+      "question": "Joint sitting of the two Houses of Parliament to resolve a deadlock is borrowed from the constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["USA", "Canada", "Australia", "Germany"],
+      "correct_answer": 2
+    },
+    {
+      "id": 26,
+      "question": "Emergency provisions, including suspension of Fundamental Rights, are inspired by the constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["USA", "France", "Weimar Constitution of Germany", "Japan"],
+      "correct_answer": 2
+    },
+    {
+      "id": 27,
+      "question": "The Directive Principles of State Policy (DPSP) in the Indian Constitution are borrowed from the constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["USA", "UK", "Ireland", "France"],
+      "correct_answer": 2
+    },
+    {
+      "id": 28,
+      "question": "The method of election of the President of India is inspired by the constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Ireland", "USA", "UK", "Canada"],
+      "correct_answer": 0
+    },
+    {
+      "id": 29,
+      "question": "Nomination of members to the Rajya Sabha by the President is a feature taken from the constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["USA", "Ireland", "UK", "South Africa"],
+      "correct_answer": 1
+    },
+    {
+      "id": 30,
+      "question": "The republican form of government in India is influenced by the constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["France", "USA", "UK", "Canada"],
+      "correct_answer": 0
+    },
+    {
+      "id": 31,
+      "question": "The ideals of Liberty, Equality and Fraternity in the Preamble are borrowed from the:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Irish Constitution", "French Constitution", "US Constitution", "Canadian Constitution"],
+      "correct_answer": 1
+    },
+    {
+      "id": 32,
+      "question": "The concept of “procedure established by law” in Article 21 is inspired from the constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["USA", "UK", "Japan", "Germany"],
+      "correct_answer": 2
+    },
+    {
+      "id": 33,
+      "question": "The procedure for amendment of the Indian Constitution is partly modeled on the constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["USA", "South Africa", "Canada", "UK"],
+      "correct_answer": 1
+    },
+    {
+      "id": 34,
+      "question": "The system of proportional representation by single transferable vote for Rajya Sabha elections is borrowed from the constitution of:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["USA", "UK", "South Africa", "France"],
+      "correct_answer": 2
+    },
+    {
+      "id": 35,
+      "question": "The federal structure, office of Governor and emergency provisions in India are largely taken from:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["US Constitution", "Government of India Act, 1935", "Government of India Act, 1919", "Irish Constitution"],
+      "correct_answer": 1
+    },
+    {
+      "id": 36,
+      "question": "Which of the following is NOT a feature taken from the Government of India Act, 1935?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Public Service Commissions", "Provincial autonomy", "Fundamental Duties", "Judiciary system"],
+      "correct_answer": 2
+    },
+    {
+      "id": 37,
+      "question": "Integrated judiciary in India, in which the Supreme Court sits at the top of a single system, traces its immediate origin mainly to:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Government of India Act, 1935", "US Constitution", "Irish Constitution", "Australian Constitution"],
+      "correct_answer": 0
+    },
+    {
+      "id": 38,
+      "question": "Which one of the following provisions of the Indian Constitution is directly related to the administrative details such as civil services and police?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Borrowed from US Constitution", "Borrowed from French Constitution", "Borrowed from Government of India Act, 1935", "Borrowed from Japanese Constitution"],
+      "correct_answer": 2
+    },
+    {
+      "id": 39,
+      "question": "Which of the following pairs is correctly matched?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Fundamental Duties - French Constitution", "DPSPs - Irish Constitution", "Judicial review - British Constitution", "Emergency powers - Australian Constitution"],
+      "correct_answer": 1
+    },
+    {
+      "id": 40,
+      "question": "The primary historical statute that provided the basic administrative framework later adopted in the Indian Constitution is:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Indian Councils Act, 1909", "Government of India Act, 1919", "Government of India Act, 1935", "Indian Independence Act, 1947"],
+      "correct_answer": 2
+    },
+    {
+      "id": 41,
+      "question": "Who was the first Indian Air Marshal?",
+      "code_snippet": null,
+      "language": "General Knowledge",
+      "options": ["Rakesh Sharma", "Subroto Mukherjee", "Satyendranath Tagore", "J.R.D. Tata"],
+      "correct_answer": 1
+    },
+    {
+      "id": 42,
+      "question": "Who was the first Indian commercial woman pilot?",
+      "code_snippet": null,
+      "language": "General Knowledge",
+      "options": ["Gunjan Saxena", "Durba Banerjee", "Avni Choudhary", "Sarojini Naidu"],
+      "correct_answer": 1
+    },
+    {
+      "id": 43,
+      "question": "Who introduced the printing press in India?",
+      "code_snippet": null,
+      "language": "General Knowledge / History",
+      "options": ["James Hicky", "Morarji Desai", "Lord Mountbatten", "Lord Clive"],
+      "correct_answer": 0
+    },
+    {
+      "id": 44,
+      "question": "Who was the first Home Minister of independent India?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Jawaharlal Nehru", "Morarji Desai", "Mahatma Gandhi", "Sardar Vallabhbhai Patel"],
+      "correct_answer": 3
+    },
+    {
+      "id": 45,
+      "question": "Who was the first British Viceroy of India?",
+      "code_snippet": null,
+      "language": "General Knowledge / History",
+      "options": ["Lord Clive", "Lord Canning", "Lord Mountbatten", "Lord Edward"],
+      "correct_answer": 1
+    },
+    {
+      "id": 46,
+      "question": "Who was the first Indian to join the I.C.S?",
+      "code_snippet": null,
+      "language": "General Knowledge / History",
+      "options": ["Jamini Roy", "Subhas Chandra Bose", "Satyendranath Tagore", "Rabindranath Tagore"],
+      "correct_answer": 2
+    },
+    {
+      "id": 47,
+      "question": "Who was the first President of the Indian National Congress?",
+      "code_snippet": null,
+      "language": "General Knowledge / History",
+      "options": ["W. C. Banerjee", "Mahatma Gandhi", "Jawaharlal Nehru", "Subhas Chandra Bose"],
+      "correct_answer": 0
+    },
+    {
+      "id": 48,
+      "question": "Who was the first Indian woman IPS Officer?",
+      "code_snippet": null,
+      "language": "General Knowledge",
+      "options": ["Kiran Bedi", "Alka Sirohi", "Indira Gandhi", "Durga Banerjee"],
+      "correct_answer": 0
+    },
+    {
+      "id": 49,
+      "question": "Who was the first Indian woman to swim across the English Channel?",
+      "code_snippet": null,
+      "language": "General Knowledge",
+      "options": ["Bachendri Pal", "Mary Kom", "Arati Saha", "Avni Choudhary"],
+      "correct_answer": 2
+    },
+    {
+      "id": 50,
+      "question": "Who was the first Indian woman to get the Bharat Ratna?",
+      "code_snippet": null,
+      "language": "General Knowledge",
+      "options": ["Indira Gandhi", "Bachendri Pal", "Sania Mirza", "Annie Besant"],
+      "correct_answer": 0
+    },
+    {
+      "id": 51,
+      "question": "Which Schedule contains the names of States and Union Territories?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["First Schedule", "Second Schedule", "Fourth Schedule", "Seventh Schedule"],
+      "correct_answer": 0
+    },
+    {
+      "id": 52,
+      "question": "Emoluments and allowances of the President and Governor are mentioned in which Schedule?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Second Schedule", "Third Schedule", "Fifth Schedule", "Ninth Schedule"],
+      "correct_answer": 0
+    },
+    {
+      "id": 53,
+      "question": "Oaths and affirmations are listed in which Schedule?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Fourth Schedule", "Fifth Schedule", "Third Schedule", "Second Schedule"],
+      "correct_answer": 2
+    },
+    {
+      "id": 54,
+      "question": "The allocation of seats in Rajya Sabha is provided in:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["First Schedule", "Fourth Schedule", "Sixth Schedule", "Seventh Schedule"],
+      "correct_answer": 1
+    },
+    {
+      "id": 55,
+      "question": "Which Schedule deals with Scheduled Areas and Scheduled Tribes?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Fifth Schedule", "Sixth Schedule", "Seventh Schedule", "Tenth Schedule"],
+      "correct_answer": 0
+    },
+    {
+      "id": 56,
+      "question": "The administration of tribal areas of Assam, Tripura, Meghalaya & Mizoram is under:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Fifth Schedule", "Sixth Schedule", "Ninth Schedule", "Twelfth Schedule"],
+      "correct_answer": 1
+    },
+    {
+      "id": 57,
+      "question": "The three legislative lists (Union, State, Concurrent) are in:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Second Schedule", "Seventh Schedule", "Fifth Schedule", "Sixth Schedule"],
+      "correct_answer": 1
+    },
+    {
+      "id": 58,
+      "question": "How many subjects are presently in the Union List?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["97", "100", "61", "52"],
+      "correct_answer": 1
+    },
+    {
+      "id": 59,
+      "question": "Initially, how many subjects were there in the State List?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["66", "100", "47", "14"],
+      "correct_answer": 0
+    },
+    {
+      "id": 60,
+      "question": "Subjects like marriage, divorce, education, and electricity are in the:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Union List", "State List", "Concurrent List", "None of these"],
+      "correct_answer": 2
+    },
+    {
+      "id": 61,
+      "question": "Which Schedule deals with official languages?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Sixth Schedule", "Seventh Schedule", "Eighth Schedule", "Ninth Schedule"],
+      "correct_answer": 2
+    },
+    {
+      "id": 62,
+      "question": "Sindhi was added to the Eighth Schedule by which Amendment?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["21st CAA, 1967", "71st CAA", "92nd CAA", "96th CAA"],
+      "correct_answer": 0
+    },
+    {
+      "id": 63,
+      "question": "Konkani, Manipuri, and Nepali were added by the:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["71st Constitutional Amendment", "92nd Constitutional Amendment", "96th Constitutional Amendment", "21st Constitutional Amendment"],
+      "correct_answer": 0
+    },
+    {
+      "id": 64,
+      "question": "Bodo, Dogri, Maithili and Santhali were added to the Eighth Schedule by:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["21st CAA", "71st CAA", "92nd CAA", "96th CAA"],
+      "correct_answer": 2
+    },
+    {
+      "id": 65,
+      "question": "'Oriya' was changed to 'Odia' through the:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["92nd CAA", "96th CAA", "99th CAA", "100th CAA"],
+      "correct_answer": 1
+    },
+    { 
+      "id": 66,
+      "question": "Schedule dealing with land reforms and Zamindari abolition:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Ninth Schedule", "Tenth Schedule", "Fifth Schedule", "Eleventh Schedule"],
+      "correct_answer": 0
+    },
+    {
+      "id": 67,
+      "question": "Anti-defection law (disqualification of MPs & MLAs) is in:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Ninth Schedule", "Tenth Schedule", "Eleventh Schedule", "Twelfth Schedule"],
+      "correct_answer": 1
+    },
+    {
+      "id": 68,
+      "question": "The Panchayati Raj system is included in:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Ninth Schedule", "Tenth Schedule", "Eleventh Schedule", "Twelfth Schedule"],
+      "correct_answer": 2
+    },
+    {
+      "id": 69,
+      "question": "The Eleventh Schedule contains how many functional areas?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["18", "29", "22", "66"],
+      "correct_answer": 1
+    },
+    {
+      "id": 70,
+      "question": "Provisions related to municipalities are listed in:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Ninth Schedule", "Eleventh Schedule", "Twelfth Schedule", "Second Schedule"],
+      "correct_answer": 2
+    },
+    {
+      "id": 71,
+      "question": "Which of the following languages was NOT added by the 71st Amendment?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Nepali", "Konkani", "Manipuri", "Maithili"],
+      "correct_answer": 3
+    },
+    {
+      "id": 72,
+      "question": "Betting and gambling fall under:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Union List", "State List", "Concurrent List", "Not mentioned anywhere"],
+      "correct_answer": 1
+    },
+    {
+      "id": 73,
+      "question": "Which list contains banking as a subject?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Union List", "State List", "Concurrent List", "Financial List"],
+      "correct_answer": 0
+    },
+    {
+      "id": 74,
+      "question": "Residuary powers of legislation belong to:",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["State Government", "Union Government", "Concurrent responsibility", "Supreme Court"],
+      "correct_answer": 1
+    },
+    {
+      "id": 75,
+      "question": "Panchayats get constitutional status through which Schedule?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Seventh", "Ninth", "Eleventh", "Twelfth"],
+      "correct_answer": 2
+    },
+    {
+      "id": 76,
+      "question": "How many languages were originally listed in the Eighth Schedule?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["12", "14", "16", "18"],
+      "correct_answer": 1
+    },
+    {
+      "id": 77,
+      "question": "During which among the following movements, Mahatma Gandhi remarked: “on bended knees I asked for bread and received stone instead” ?",
+      "code_snippet": null,
+      "language": "General Knowledge / History",
+      "options": ["Khilafat Movement", "Non-Cooperation Movement", "Dandi March", "Quit India Movement"],
+      "correct_answer": 2
+    },
+    {
+      "id": 78,
+      "question": "The annulment of Partition of Bengal was done by __?",
+      "code_snippet": null,
+      "language": "General Knowledge / History",
+      "options": ["Lord Curzon", "Lord Minto", "Lord Hardinge", "Lord Chelmsford"],
+      "correct_answer": 2
+    },
+    {
+      "id": 79,
+      "question": "Which among the following tribal leaders was regarded as an incarnation of God and father of the world?",
+      "code_snippet": null,
+      "language": "General Knowledge / History",
+      "options": ["Nanak Bhil", "Jagia Bhagat", "Birsa Munda", "Siddhu Santha"],
+      "correct_answer": 2
+    },
+    {
+      "id": 80,
+      "question": "Who were the first to start a joint stock company to trade with India?",
+      "code_snippet": null,
+      "language": "General Knowledge / History",
+      "options": ["Portuguese", "Dutch", "French", "Danish"],
+      "correct_answer": 1
+    },
+    {
+      "id": 81,
+      "question": "The Cartaz system with reference to naval trade was used by which of the following?",
+      "code_snippet": null,
+      "language": "General Knowledge / History",
+      "options": ["Dutch", "French", "English", "Portuguese"],
+      "correct_answer": 3
+    },
+    {
+      "id": 82,
+      "question": "Who among the following resigned from the membership of the Viceroy’s Executive Council as a protest against Jallianwala Bagh Massacre?",
+      "code_snippet": null,
+      "language": "General Knowledge / History",
+      "options": ["C. P. Ramaswami Iyer", "Muhammad Ali Jinnah", "B. N. Sarma", "Shankaran Nair"],
+      "correct_answer": 3
+    },
+    {
+      "id": 83,
+      "question": "Bhagat Singh, Rajguru and Sukhdev along with Jaigopal were involved in which among the following conspiracy case?",
+      "code_snippet": null,
+      "language": "General Knowledge / History",
+      "options": ["Kanpur Conspiracy Case", "Lahore Conspiracy Case", "Bhagalapur Conspiracy Case", "Alipore Bomb case"],
+      "correct_answer": 1
+    },
+    {
+      "id": 84,
+      "question": "Which party observed the “Black Day” on July 3, 1947 against Partition of India?",
+      "code_snippet": null,
+      "language": "General Knowledge / History",
+      "options": ["Indian National Congress", "Forward Bloc", "Hindu Mahasabha", "Communist Party of India"],
+      "correct_answer": 2
+    },
+    {
+      "id": 85,
+      "question": "Who among the following was the first president of Constituent Assembly?",
+      "code_snippet": null,
+      "language": "General Knowledge / Civics",
+      "options": ["Dr. Rajendra Prasad", "Sachidanand Sinha", "Jawahar Lal Nehru", "B R Ambedkar"],
+      "correct_answer": 1
+    }
+  ]
+}

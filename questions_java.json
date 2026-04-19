@@ -335,7 +335,7 @@
     },
     {
       "id": 26,
-      "question": "The output of 42/6%2 is:",
+      "question": "The output is:",
       "code_snippet": "42/6%2",
       "language": "Java",
       "options": [
@@ -402,6 +402,2579 @@
       ],
       "correct_answer": 3,
       "explanation": "The ternary operator (`? :`) is one of the few operators in Java that is **right-associative**, meaning it is evaluated from **right to left**. This is generally true for all assignment operators (`=`, `+=`, etc.) and the unary operators (`++`, `!`, etc.) as well."
+    },
+    {
+      "id": 31,
+      "question": "Which of the following is a user-defined data type in Java? 1.array 2.double 3.class 4.boolean",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "only 1",
+        "1 and 3",
+        "only 2",
+        "only 4"
+      ],
+      "correct_answer": 1,
+      "explanation": "In Java, **double** and **boolean** are **primitive** (built-in) data types. **Class** is the core mechanism for creating **user-defined** types. **Array** is a reference type, and while its basic structure is defined by the language, the type of data it holds is often user-defined (e.g., an array of a custom class), leading it to be categorized with user-defined types in this context."
+    },
+    {
+      "id": 32,
+      "question": "Java is a _______ typed programming language which means variable types are known at the _______ time.",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "statically, compile",
+        "statically, runtime",
+        "dynamically, compile",
+        "dynamically, runtime"
+      ],
+      "correct_answer": 0,
+      "explanation": "Java is a **statically-typed** language. This means that all variable types (like **int**, **String**, **double**, etc.) must be declared and are fixed, with their type checking performed at **compile time**. This contrasts with dynamically-typed languages (like Python or JavaScript), where type checking often occurs at **runtime**."
+    },
+    {
+      "id": 33,
+      "question": "How many primitive datatypes exist in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "correct_answer": 2,
+      "explanation": "Java has **8** primitive datatypes. These are categorized into four groups:\n* **Integers** (whole numbers): **byte**, **short**, **int**, **long**\n* **Floating-point** (decimal numbers): **float**, **double**\n* **Character**: **char**\n* **Boolean**: **boolean**"
+    },
+    {
+      "id": 34,
+      "question": "What is the default value of the 'boolean' primitive data type in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "0",
+        "1",
+        "true",
+        "false"
+      ],
+      "correct_answer": 3,
+      "explanation": "In Java, **instance variables** (fields of a class) and **static variables** that are not explicitly initialized are given default values by the JVM. The default value for a **boolean** variable is **false**."
+    },
+    {
+      "id": 35,
+      "question": "What is the default value of the 'char' primitive data type in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "\\i0000",
+        "\\u0000",
+        "\\i0001",
+        "\\u0001"
+      ],
+      "correct_answer": 1,
+      "explanation": "In Java, **instance variables** and **static variables** that are not explicitly initialized are given default values by the JVM. The default value for a **char** variable is the **null character**, which is represented by the Unicode escape sequence **\\u0000** (or 0 in decimal). The options with **\\i** are not valid Java escape sequences."
+    },
+    {
+      "id": 36,
+      "question": "The Java 'byte' primitive data type is a(n):",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "8-bit signed integer",
+        "8-bit unsigned integer",
+        "16-bit signed integer",
+        "16-bit unsigned integer"
+      ],
+      "correct_answer": 0,
+      "explanation": "The **byte** primitive data type in Java is an **8-bit two's complement signed integer**. This means it can represent values from $-2^7$ to $2^7-1$, or **-128 to 127**, inclusive."
+    },
+    {
+      "id": 37,
+      "question": "Select the infinite loop:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "for(int i=1;i<=10;i++)",
+        "for(int i=2; i!=0;i-=3)",
+        "for(int i=5;i<=5;i++)",
+        "for(int i=1;i>=1;1--)"
+      ],
+      "correct_answer": 1,
+      "explanation": "The loop `for(int i=1;i>=1;i--)` is infinite because the condition `i>=1` will always be true. Starting at 1, the decrement operator `i--` will change the value to 0, then to -1, -2, and so on. Since any negative integer is greater than or equal to 1, the loop condition will always be met, causing the loop to run forever. (Note: Option (b) will terminate when `i` passes through 0 to a negative number, and option (c) will run exactly once)."
+    },
+    {
+      "id": 38,
+      "question": "What will be the output of the following Java code?",
+      "code_snippet": "int x = 5;\nif (x > 2)\n    if (x > 4)\n        System.out.println(\"A\");\n    else\n        System.out.println(\"B\");",
+      "language": "Java",
+      "options": [
+        "A",
+        "B",
+        "Compilation Error",
+        "No Output"
+      ],
+      "correct_answer": 0,
+      "explanation": "This code demonstrates **nested if statements** and the **dangling else** problem, which Java solves by associating an **else** with the **nearest preceding unmatched if**. \n\n1.  **Outer `if`:** `if (x > 2)` $\\rightarrow$ Since $5 > 2$ is **true**, execution proceeds to the inner statement.\n2.  **Inner `if`:** `if (x > 4)` $\\rightarrow$ Since $5 > 4$ is **true**, the statement `System.out.println(\"A\");` is executed, printing **A**.\n3.  The **else** block is associated with the **inner `if`** and is skipped because the inner `if` condition was true. "
+    },
+    {
+      "id": 39,
+      "question": "How many times will the following loop execute?",
+      "code_snippet": "int i = 1;\nwhile (i <= 5) {\n    System.out.println(\"Hello\");\n}",
+      "language": "Java",
+      "options": [
+        "5 times",
+        "6 times",
+        "Infinite times",
+        "Compilation Error"
+      ],
+      "correct_answer": 2,
+      "explanation": "The loop is an **infinite loop** because the loop control variable **i** is initialized to **1** and the condition is **i <= 5**. However, there is no statement **inside the loop body** (no increment or decrement) to change the value of **i**. Since **i** remains **1**, the condition **1 <= 5** is always true, causing the loop to run indefinitely."
+    },
+    {
+      "id": 40,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "for (int i = 0; i < 5; i++) {\n    if (i == 2)\n        break;\n    System.out.print(i + \" \");\n}",
+      "language": "Java",
+      "options": [
+        "0 1 2 3 4",
+        "0 1",
+        "0 1 2",
+        "No Output"
+      ],
+      "correct_answer": 1,
+      "explanation": "The **break** statement immediately terminates the loop (the `for` loop) when the condition is met. \n\n1.  **i = 0**: Condition `i < 5` is true. `i == 2` is false. Print **0**.\n2.  **i = 1**: Condition `i < 5` is true. `i == 2` is false. Print **1**.\n3.  **i = 2**: Condition `i < 5` is true. `i == 2` is **true**. The **break** statement executes, terminating the loop entirely. The print statement is skipped."
+    },
+    {
+      "id": 41,
+      "question": "What is the correct syntax for a do-while loop in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "do { } while (condition);",
+        "while (condition) { }",
+        "do (condition) { }",
+        "while { condition };"
+      ],
+      "correct_answer": 0,
+      "explanation": "The **do-while loop** in Java is an exit-controlled loop. The correct syntax is `do { // block of code } while (condition);`. It is crucial to note the **semicolon (;) at the end** of the `while` statement, which is unique to this loop type among Java's basic loops. This structure ensures the code block executes **at least once** before the condition is tested."
+    },
+    {
+      "id": 42,
+      "question": "What will be the output of the following nested loop?",
+      "code_snippet": "for (int i = 1; i <= 3; i++) {\n    for (int j = 1; j <= 2; j++) {\n        System.out.print(i + \",\" + j + \" \");\n    }\n}",
+      "language": "Java",
+      "options": [
+        "1,1 1,2 2,1 2,2 3,1 3,2",
+        "1,1 2,1 3,1 1,2 2,2 3,2",
+        "1,1 1,2 1,3 2,1 2,2 2,3",
+        "Compilation Error"
+      ],
+      "correct_answer": 0,
+      "explanation": "The **outer loop** (controlled by `i`) runs 3 times (for $i=1, 2, 3$). For **each iteration** of the outer loop, the **inner loop** (controlled by `j`) runs 2 times (for $j=1, 2$). The output is generated by executing the inner loop completely before the outer loop iterates again, resulting in the following sequence:\n* **i=1**: (j=1) prints **1,1**; (j=2) prints **1,2**.\n* **i=2**: (j=1) prints **2,1**; (j=2) prints **2,2**.\n* **i=3**: (j=1) prints **3,1**; (j=2) prints **3,2**."
+    },
+    {
+      "id": 43,
+      "question": "What happens if the condition in an if statement is false?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "It throws an error",
+        "Else block runs (if available)",
+        "Code inside if runs",
+        "Program exits"
+      ],
+      "correct_answer": 1,
+      "explanation": "If the condition in an `if` statement evaluates to **false**, the **'if' block is completely skipped**. Control is then transferred to the associated **'else' block** (if an `else` block is present), and the code within the `else` block is executed. If no `else` block is present, execution simply continues with the next statement after the entire `if` structure."
+    },
+    {
+      "id": 44,
+      "question": "Which loop in Java guarantees execution at least once?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "for",
+        "while",
+        "do-while",
+        "foreach"
+      ],
+      "correct_answer": 2,
+      "explanation": "The **do-while** loop is an exit-controlled loop, meaning the condition is checked *after* the loop body has executed. Therefore, the code inside the `do` block is guaranteed to run **at least once**, even if the condition is initially false. The **for** and **while** loops are entry-controlled and may execute zero times if the condition is false from the start."
+    },
+    {
+      "id": 45,
+      "question": "Which keyword is used to skip the current iteration in a loop?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "break",
+        "exit",
+        "continue",
+        "skip"
+      ],
+      "correct_answer": 2,
+      "explanation": "The **continue** keyword immediately stops the execution of the statements in the current iteration of a loop and moves control to the next iteration. The **break** keyword terminates the loop entirely."
+    },
+    {
+      "id": 46,
+      "question": "What is the correct structure for a switch-case block in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "switch {}",
+        "switch:",
+        "switch() {}",
+        "switch[]"
+      ],
+      "correct_answer": 2,
+      "explanation": "The correct syntax for a Java **switch** statement requires an expression (or variable) inside parentheses `()` and a code block enclosed in curly braces `{}`. The general structure is `switch (expression) { case value1: ... break; default: ... }`."
+    },
+    {
+      "id": 47,
+      "question": "The output of is",
+      "code_snippet": "Math.max(-7, Math.min(-5,-4))",
+      "language": "Java",
+      "options": [
+        "-5",
+        "-4",
+        "-7",
+        "error"
+      ],
+      "correct_answer": 0,
+      "explanation": "The expression is evaluated from the inside out. First, **Math.min(-5, -4)** returns **-5** (since -5 is less than -4). Then, **Math.max(-7, -5)** returns **-5** (since -5 is greater than -7)."
+    },
+    {
+      "id": 48,
+      "question": "Which of these class is a superclass of all other classes in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Math",
+        "Process",
+        "System",
+        "Object"
+      ],
+      "correct_answer": 3,
+      "explanation": "In Java, the **java.lang.Object** class sits at the top of the class hierarchy. Every class in Java, whether explicitly defined or not, is a direct or indirect subclass of **Object**. This ensures that all classes inherit fundamental methods like `toString()`, `equals()`, and `hashCode()`."
+    },
+    {
+      "id": 49,
+      "question": "Which of these methods of the Object class can generate a duplicate copy of the object on which it is called?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "clone()",
+        "copy()",
+        "duplicate()",
+        "dito()"
+      ],
+      "correct_answer": 0,
+      "explanation": "The **clone()** method, inherited from the `java.lang.Object` class, is used to create an exact, field-for-field copy (a **shallow copy**) of the current object. For this method to work, the class must implement the marker interface **Cloneable** and override the `clone()` method with public visibility."
+    },
+    {
+      "id": 50,
+      "question": "What is the value of the double constant 'E' defined in the Math class (Math.E)?",
+      "code_snippet": "Math.E",
+      "language": "Java",
+      "options": [
+        "approximately 3",
+        "approximately 3.14",
+        "approximately 2.72",
+        "approximately 0"
+      ],
+      "correct_answer": 2,
+      "explanation": "The constant **Math.E** in Java's `Math` class represents the base of the natural logarithm, or **Euler's number** ($e$). Its value is approximately **2.71828...**, which is best represented by **approximately 2.72** among the given options. The constant **Math.PI** is approximately 3.14."
+    },
+    {
+      "id": 51,
+      "question": "Which of these classes contains most of the static methods that work on floating-point numbers and general mathematical functions in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Math",
+        "Process",
+        "System",
+        "Object"
+      ],
+      "correct_answer": 0,
+      "explanation": "The **Math** class (java.lang.Math) contains methods for performing basic numeric operations such as elementary exponential, logarithm, square root, and trigonometric functions, most of which deal with **double** (floating-point) numbers. All methods in this class are **static**."
+    },
+    {
+      "id": 52,
+      "question": "What is the value of “d” in the following Java code snippet?",
+      "code_snippet": "double d = Math.round ( 2.5 + Math.random() );",
+      "language": "Java",
+      "options": [
+        "2",
+        "3.0",
+        "4",
+        "2.5"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 53,
+      "question": "What will be the output of the following Java program?",
+      "code_snippet": "class Output\n{\n     public static void main(String args[])\n     {\n         int x = (int)3.14; \n         int y = (int) Math.abs(x);\n         System.out.print(y);\n     }\n}",
+      "language": "Java",
+      "options": [
+        "0",
+        "3",
+        "3.0",
+        "3.1"
+      ],
+      "correct_answer": 1,
+      "explanation": "The output will be **3**.\n1. `int x = (int)3.14;` performs a cast, truncating the decimal part. **x** becomes **3**.\n2. `Math.abs(x)` is `Math.abs(3)`, which returns the positive **double** value **3.0**.\n3. This **3.0** is then cast back to an **int** via `(int)`, making **y** equal to **3**.\n4. `System.out.print(y)` prints the integer **3**."
+    },
+    {
+      "id": 54,
+      "question": "What will be the output of the following Java program?",
+      "code_snippet": "class Output \n{\n     public static void main(String args[]) \n    {\n        double x = 3.1;  \n        double y = 4.5;\n        double z = Math.max( x, y );\n        System.out.print(z);\n    }\n}",
+      "language": "Java",
+      "options": [
+        "true",
+        "false",
+        "3.1",
+        "4.5"
+      ],
+      "correct_answer": 3,
+      "explanation": "The **Math.max(x, y)** method returns the larger of the two given arguments. Since **4.5** is greater than **3.1**, the variable **z** is assigned the value **4.5**, which is then printed to the console."
+    },
+    {
+      "id": 55,
+      "question": "What will be the output of the following Java program?",
+      "code_snippet": "class Output \n{\n     public static void main(String args[]) \n    {\n        double x = 2.0;  \n        double y = 3.0;\n        double z = Math.pow( x, y );\n        System.out.print(z);\n    }\n}",
+      "language": "Java",
+      "options": [
+        "2.0",
+        "4.0",
+        "8.0",
+        "9.0"
+      ],
+      "correct_answer": 2,
+      "explanation": "The **Math.pow(x, y)** method is used to calculate $x$ raised to the power of $y$ (i.e., $x^y$). In this code, $x=2.0$ and $y=3.0$, so the calculation is $2.0^3$. This evaluates to $2 \times 2 \times 2 = 8$. Since the method returns a **double**, the result is **8.0**."
+    },
+    {
+      "id": 56,
+      "question": "Which of the following is true for the given object creation statement?",
+      "code_snippet": "Game cricket = new Game();",
+      "language": "Java",
+      "options": [
+        "Game is an object of cricket class",
+        "New keyword creates object Game",
+        "Game is a class and cricket is an object",
+        "Game and cricket are objects"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 57,
+      "question": "What is an object in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "A class template",
+        "An instance of a class",
+        "A function",
+        "A primitive data type"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 58,
+      "question": "Which keyword is used to create an object in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "class",
+        "this",
+        "new",
+        "void"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 59,
+      "question": "What is a class in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "A data type",
+        "A blueprint for objects",
+        "A collection of methods",
+        "A single method"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 60,
+      "question": "What is the correct way to define a class in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "public Example {}",
+        "class Example {}",
+        "void Example {}",
+        "object Example {}"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 61,
+      "question": "What does this keyword refer to?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Current object",
+        "Parent class",
+        "Static method",
+        "Return type"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 62,
+      "question": "Which keyword refers to the immediate parent class object?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "base",
+        "super",
+        "parent",
+        "this"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 63,
+      "question": "Post office is an example for which access specifier?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "public",
+        "local",
+        "protected",
+        "private"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 64,
+      "question": "Which of these access specifiers must be used for the main() method in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "private",
+        "public",
+        "protected",
+        "none of the mentioned"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 65,
+      "question": "Which of these is used to access a member of a class before an object of that class is created?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "public",
+        "private",
+        "static",
+        "protected"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 66,
+      "question": "Which of these is used as a default for a member of a class if no access specifier is used for it?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "private",
+        "public",
+        "public, within its own package",
+        "protected"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 67,
+      "question": "What is the process by which we can control what parts of a program can access the members of a class?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Polymorphism",
+        "Abstraction",
+        "Encapsulation",
+        "Recursion"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 68,
+      "question": "Which of the following statements about Java access modifiers are incorrect?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "public members of class is accessible anywhere",
+        "private members of class can only be accessed by other members of the class",
+        "private become protected members in subclass",
+        "protected members if inherited by a subclass, become private in it"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 69,
+      "question": "Assertion (A): In a switch case, a break statement avoids fall-through. Reason (R): A break statement helps to execute only one case at a time.",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Both (A) and (R) are true and (R) is a correct explanation of (A).",
+        "Both (A) and (R) are true and (R) is not a correct explanation of (A).",
+        "(A) is true and (R) is false.",
+        "(A) is false and (R) is true."
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 70,
+      "question": "A SWITCH case statement in Java is a ___ control statement.",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Iteration",
+        "Loop",
+        "Selection",
+        "Jump"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 71,
+      "question": "Which is the alternative to the SWITCH statement in Java language?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "break, continue",
+        "for, while",
+        "if, else",
+        "goto, exit"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 72,
+      "question": "What are the keywords used to implement a SWITCH case in Java language?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "switch, case",
+        "default",
+        "break",
+        "All"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 73,
+      "question": "What are the parts of a SWITCH in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "switch input condition",
+        "case constants",
+        "case statements",
+        "All"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 74,
+      "question": "A SWITCH statement accepts ___ type of data as input.",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "byte",
+        "short",
+        "int",
+        "All"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 76,
+      "question": "What is the output of the Java program with SWITCH below?",
+      "code_snippet": "int a=10;\nswitch(a)\n{\ncase 10: System.out.println(\"TEN\");\n}",
+      "language": "Java",
+      "options": [
+        "No output",
+        "TEN",
+        "Compiler error as there is no BREAK.",
+        "None"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 77,
+      "question": "What is the output of the Java program below?",
+      "code_snippet": "int b=20;\nswitch(b)\n{\ndefault: System.out.println(\"LION\");\n}",
+      "language": "Java",
+      "options": [
+        "No output",
+        "LION",
+        "Compiler error as there are no CASE statements.",
+        "None"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 79,
+      "question": "What is the output of the Java program below?",
+      "code_snippet": "int animal = 2;\nswitch(animal)\n{\n  break: System.out.println(\"DOMESTIC\");\n}",
+      "language": "Java",
+      "options": [
+        "No output",
+        "GOAT",
+        "DOMESTIC",
+        "Compiler error"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 80,
+      "question": "What is the output of the Java program below?",
+      "code_snippet": "int num = 2;\nswitch(1)\n{\ncase num: System.out.println(\"EXAM TIME\"); break;\ndefault: System.out.println(\"UNKNOWN\");\n}",
+      "language": "Java",
+      "options": [
+        "EXAM TIME",
+        "UNKNOWN",
+        "STANFORD",
+        "Compiler error"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 81,
+      "question": "What is the output of the Java program with SWITCH?",
+      "code_snippet": "int num=20;\nswitch(num)\n{\ncase 10: System.out.println(\"TEN\"); break;\ncase 20: System.out.println(\"TWENTY\"); break;\ncase 30: System.out.println(\"THIRTY\");\n}",
+      "language": "Java",
+      "options": [
+        "TEN",
+        "TWENTY",
+        "THIRTY",
+        "TEN TWENTY"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 82,
+      "question": "Which of the statements in a switch case is executed when all the case statements are false?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "First case statement",
+        "Last case statement",
+        "Default statement",
+        "No statements are executed"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 83,
+      "question": "Which of the following is the correct syntax of a switch statement in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "switch(input) { case 1: { statements; } default: statement; }",
+        "switch() { default; }",
+        "Switch { case 1: { statements; } case 2: { statements; } }",
+        "switch () { case 1: { statement; } }"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 84,
+      "question": "What will be the output of the following Java program?",
+      "code_snippet": "class Switch {\npublic static void main ( String args [ ] )\n{\nboolean a = true;\nswitch(a)\n{\ncase true:\n{\nSystem.out.println(\"Boolean values are accepted\");\n}\ncase false:\n{\nSystem.out.println(\"Boolean values are not accepted\");\n}\ndefault:\n{\nSystem.out.println(\"No values are accepted\");\n}\n}\n}\n}",
+      "language": "Java",
+      "options": [
+        "Boolean values are not accepted.",
+        "Boolean values are accepted.",
+        "No values are accepted.",
+        "Compilation error."
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 85,
+      "question": "What is the use of a break statement in switch cases?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Use to execute a statement",
+        "Used to terminate a case statement",
+        "Used to move to another case statement.",
+        "To end the program."
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 86,
+      "question": "Is the following code snippet correct?",
+      "code_snippet": "for(int i=1; i<=10; i++) \n    System.out.println(i);",
+      "language": "Java",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 87,
+      "question": "Which of the following is used with the switch statement?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Continue",
+        "Exit",
+        "Break",
+        "Do"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 88,
+      "question": "What is the value stored in x in the following lines of Java code?",
+      "code_snippet": "int x, y, z; \nx = 0; \ny = 1; \nx = y = z = 8;",
+      "language": "Java",
+      "options": [
+        "0",
+        "1",
+        "9",
+        "8"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 89,
+      "question": "Which of the following loops will execute the body of loop even when the condition controlling the loop is initially false?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Do-while",
+        "While",
+        "For",
+        "None of the mentioned"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 90,
+      "question": "What will be the output of the program?",
+      "code_snippet": "public static void main(String args[]) {\n    for(int i = 0; i < 10; i++) {\n        System.out.println(i);\n    }\n}",
+      "language": "Java",
+      "options": [
+        "Prints first 10 whole numbers",
+        "Prints first 10 natural numbers",
+        "Prints 10 to 1 in descending order.",
+        "Compilation error."
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 91,
+      "question": "What is the correct way to declare a Java main method?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "public static void Main(String[] args)",
+        "public void main(String args)",
+        "public static void main(String[] args)",
+        "private static void main(String args[])"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 92,
+      "question": "What is the output of the following Java program?",
+      "code_snippet": "public class Main { \n    public static void main(String[] args) { \n        int my_var = 20; \n        System.out.println(my_var); \n    }\n}",
+      "language": "Java",
+      "options": [
+        "20",
+        "Compilation Error",
+        "Runtime Error",
+        "Undefined Behavior"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 93,
+      "question": "Which of the following is NOT a Feature of Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Platform independence",
+        "Object-oriented",
+        "Dynamically typed language",
+        "Robust"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 94,
+      "question": "Which component is responsible for converting bytecode to machine code?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Java Compiler",
+        "JDK",
+        "JVM",
+        "JRE"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 95,
+      "question": "Which part of the JDK is used to run Java programs?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "javac",
+        "JRE",
+        "Javadoc",
+        "JAR"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 96,
+      "question": "Java code is compiled into which intermediate form?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Assembly",
+        "Bytecode",
+        "Binary",
+        "Machine code"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 97,
+      "question": "Which Java feature ensures code written once can run anywhere?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Platform independence",
+        "Multithreading",
+        "Security",
+        "Performance"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 98,
+      "question": "The index (subscript) of the last element of an array ar[] is",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "ar.length()",
+        "ar[].length",
+        "ar.length()-1",
+        "ar.length-1"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 99,
+      "question": "Which of the following is the correct way to declare an array in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "int arr[5];",
+        "int arr = new int(5);",
+        "int[] arr = new int[5];",
+        "array<int> arr = new int[5];"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 100,
+      "question": "What will be the output of the following code?",
+      "code_snippet": "int[] arr = {1, 2, 3, 4, 5};\nSystem.out.println(arr[2]);",
+      "language": "Java",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 101,
+      "question": "What is the default value of an integer array in Java?",
+      "code_snippet": "int[] arr = new int[5];",
+      "language": "Java",
+      "options": [
+        "null",
+        "0",
+        "garbage value",
+        "depends on JVM"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 102,
+      "question": "Which of the following is used to determine the length of an array in Java?",
+      "code_snippet": "int[] arr = {1, 2, 3};",
+      "language": "Java",
+      "options": [
+        "arr.length()",
+        "arr.size",
+        "arr.length",
+        "arr.count()"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 103,
+      "question": "Which of the following creates an array of 5 integers?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "int arr[] = new int[5];",
+        "int arr[5];",
+        "int arr() = 5;",
+        "int[5] arr;"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 104,
+      "question": "How do you access the third element of an array arr?",
+      "code_snippet": "int[] arr = {10, 20, 30, 40};",
+      "language": "Java",
+      "options": [
+        "arr(3)",
+        "arr[3]",
+        "arr[2]",
+        "arr{3}"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 105,
+      "question": "How many rows and columns are in a 2D array int[][] arr = new int[3][4];?",
+      "code_snippet": "int[][] arr = new int[3][4];",
+      "language": "Java",
+      "options": [
+        "3 rows, 4 columns",
+        "4 rows, 3 columns",
+        "3 elements",
+        "7 elements"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 106,
+      "question": "Which of these best defines a multidimensional array in Java?",
+      "code_snippet": "int[][] arr = new int[3][4];",
+      "language": "Java",
+      "options": [
+        "int arr[][]",
+        "int[] arr[]",
+        "Both a and b",
+        "int arr(2)(3)"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 107,
+      "question": "Assertion (A): A clock is a real-life example of nested loops. Reason (R): The hour hand moves through 12 positions, while the minute hand moves through 60 positions within each hour.",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Both (A) and (R) are true and (R) is a correct explanation of (A).",
+        "Both (A) and (R) are true and (R) is not a correct explanation of (A).",
+        "(A) is true and (R) is false.",
+        "(A) is false and (R) is true."
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 108,
+      "question": "Examine the following code. How many times will the nested loop run?",
+      "code_snippet": "for (int i = 1; i <= 3; i++) {\n    for (int j = 1; j <= i; j++) {\n    }\n}",
+      "language": "Java",
+      "options": [
+        "3",
+        "6",
+        "1",
+        "9"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 109,
+      "question": "Examine the following code. Is there anything that will prevent it from processing?",
+      "code_snippet": "for (int i = 1 i < - 3 i++) {\n    for (int j = 1 1 <-3; j++) { }\n}",
+      "language": "Java",
+      "options": [
+        "No, it is correct",
+        "No, but it could run forever",
+        "Yes, it will return a compiler error",
+        "Yes, but it will show all zeroes in the output"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 110,
+      "question": "Which of the following pairs of methods will cause a compile-time error due to incorrect method overloading?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "void test(int a, int b) and void test(double a, double b)",
+        "void test(int a, double b) and void test(double a, int b)",
+        "void test(int a, double b) and void test(int a)",
+        "void test(int a) and int test(int a)"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 111,
+      "question": "What is the process of defining two or more methods within the same class that have the same name but different parameter declarations?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "method overloading",
+        "method overriding",
+        "method hiding",
+        "none of the mentioned"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 112,
+      "question": "Which of these can be overloaded in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Methods",
+        "Constructors",
+        "Both Methods and Constructor",
+        "None of the mentioned"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 113,
+      "question": "In Java, what happens when an argument is passed by call-by-value?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "A copy of the argument is passed to the method",
+        "A reference to the original is passed",
+        "Copy is passed but affects the original",
+        "Reference is passed and affects original"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 114,
+      "question": "What is the process of defining a method in terms of itself, that is a method that calls itself?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Polymorphism",
+        "Abstraction",
+        "Encapsulation",
+        "Recursion"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 115,
+      "question": "Which of the following converts the String “25” to the double value 25.0?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Double. Parsedouble(\"25\")",
+        "Double.parse(\"25\")",
+        "Double.parseDouble(\"25\")",
+        "Double.parseDouble(25)"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 116,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class IntegertoString {\n    public static void main(String[] args)\n    {\n        Integer num = 12345;\n        String str = num.toString();\n        System.out.println(str.length());\n    }}",
+      "language": "Java",
+      "options": [
+        "5",
+        "Compilation error",
+        "4",
+        "Null"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 117,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class InttoString {\n    public static void main(String[] args)\n    {\n        int num = 150;\n        String str = num.toString();\n        System.out.println(str.length());\n    }}",
+      "language": "Java",
+      "options": [
+        "3",
+        "Compilation error",
+        "150",
+        "2"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 118,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class InttoDouble {\n    public static void main(String[] args) \n    {    \n        Integer myInt = 4;\n        Double myDouble = 3.99;\n        System.out.print(myInt+\" \");\n        System.out.println(myDouble);\n    }}",
+      "language": "Java",
+      "options": [
+        "4 3.99",
+        "4 3",
+        "4 0.99",
+        "Compilation error"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 119,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class Double {\n    public static void main(String[] args) \n    {\n        Double num = 3;\n        System.out.println(num);\n    }}",
+      "language": "Java",
+      "options": [
+        "3",
+        "3.0",
+        "Garbage Value",
+        "Compilation Error"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 120,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class Double {\n    public static void main(String[] args) \n    {\n        Double num = 3.0;\n        System.out.println(num);\n    }}",
+      "language": "Java",
+      "options": [
+        "3",
+        "3.0",
+        "Garbage Value",
+        "Compilation Error"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 121,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class Double2{\n    public static void main(String[] args) \n    {\n        Double num = 6.80;\n        System.out.println(num);\n    }}",
+      "language": "Java",
+      "options": [
+        "6.80",
+        "6.8",
+        "Garbage Value",
+        "Compilation Error"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 122,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class Double2{\n    public static void main(String[] args) \n    {\n        Double num = 6.85;\n        System.out.println(num);\n    }}",
+      "language": "Java",
+      "options": [
+        "6.80",
+        "6.8",
+        "6.85",
+        "Compilation Error"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 123,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class PiObject{\n    public static void main(String[] args) \n    {\n        Double num1 = 3.14;\n        Double num2 = new Double(1.42);\n        System.out.print(num1+\" \"+num2);\n    }}",
+      "language": "Java",
+      "options": [
+        "3.14 1.42",
+        "Compilation error",
+        "3.14 null",
+        "3.14 -1"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 124,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class Value{  \n    public static void main(String args[])\n    {  \n        Integer obj = new Integer(100);  \n        int num = obj.intValue();\n        System.out.println(num+ \" \"+ obj);  \n    }}",
+      "language": "Java",
+      "options": [
+        "100 D",
+        "100 100",
+        "Compilation error",
+        "Garbage value"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 125,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class Calculate { \n    public static void main(String[] args) \n    { \n        Integer obj = new Integer(10);  \n        calc(obj);\n        System.out.print(obj);\n    }  \n    public static void calc(Integer obj) \n    { \n        obj = obj + 1;     \n    } }",
+      "language": "Java",
+      "options": [
+        "10",
+        "11",
+        "Compilation error",
+        "-1"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 126,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class Calculate { \n    public static void main(String[] args) \n    { \n        Integer obj = new Integer(10);  \n        calc(obj);\n    }  \n    public static void calc(Integer obj) \n    { \n        obj = obj + 1;\n        System.out.print(obj);\n    } }",
+      "language": "Java",
+      "options": [
+        "10",
+        "11",
+        "Compilation error",
+        "-1"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 127,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class ValueOfNum{  \n    public static void main(String args[])\n    {  \n        int num=10;  \n        Integer obj=Integer.valueOf(num);  \n        System.out.println(num+ \" \"+ obj);  \n    }}",
+      "language": "Java",
+      "options": [
+        "10 10",
+        "10 -1",
+        "Garbage value",
+        "Compilation error"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 128,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class CompareTo{  \n    public static void main(String args[])\n    {  \n        Integer i = new Integer(10); \n        System.out.println(i.compareTo(7));    \n    }}",
+      "language": "Java",
+      "options": [
+        "1",
+        "0",
+        "-1",
+        "Compilation error"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 129,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class Conversion{  \n    public static void main(String args[])\n    {  \n        int b=100;\n        System.out.print(Integer.toHexString(b)+\" \"); \n        System.out.print(Integer.toOctalString(b)+\" \"); \n        System.out.print(Integer.toBinaryString(b)+\" \");    \n    }}",
+      "language": "Java",
+      "options": [
+        "64 144 1100100",
+        "64 134 0010011",
+        "59 144 1100100",
+        "64 134 0010011"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 130,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class StringValueOf\n{\n    public static void main(String args[])\n    {\n        String b=\"100\";\n        System.out.print(Integer.valueOf(b,2));\n    }\n}",
+      "language": "Java",
+      "options": [
+        "1100100",
+        "4",
+        "100",
+        "Compilation error"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 131,
+      "question": "What is the output of the following Java code?",
+      "code_snippet": "class IndexOf{  \n    public static void main(String args[])\n    {  \n        Integer b=17;\n        String str=Integer.toString(b);\n        System.out.println(str.indexOf(\"5\"));\n    }}",
+      "language": "Java",
+      "options": [
+        "2",
+        "17",
+        "Compilation error",
+        "-1"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 132,
+      "question": "The following statements will display:",
+      "code_snippet": "int p=0;\nfor(p=4; p>0; p−=2);\nSystem.out.print(p);\nSystem.out.println(p);",
+      "language": "Java",
+      "options": [
+        "42",
+        "4200",
+        "0\n0",
+        "00"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 133,
+      "question": "Which of the following loops will execute the body of loop even when the condition controlling the loop is initially false?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Do-while",
+        "While",
+        "For",
+        "None of the mentioned"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 134,
+      "question": "What is true about the do-while statement?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Do statement executes the code of a loop at least once",
+        "Do statement does not get execute if condition is not matched in the first iteration",
+        "Do statement checks the condition at the beginning of the loop",
+        "Do statement executes the code more than once always"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 135,
+      "question": "The output of the following Java statement is:",
+      "code_snippet": "System.out.println(\"I said, \\\"It\\’s wise to obey elders.\\\"\");",
+      "language": "Java",
+      "options": [
+        "I said, ‘It is wise to obey elders.’",
+        "I said, “It’s wise to obey elders.”",
+        "I said, It’s wise to elders.",
+        "“‘It’s wise to obey elders.’”"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 136,
+      "question": "What does the following code print?",
+      "code_snippet": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Code\" + \"Chef\");\n    }}",
+      "language": "Java",
+      "options": [
+        "CodeChef",
+        "Code Chef",
+        "Code\nChef",
+        "Code and Chef"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 137,
+      "question": "How do you print 5 5?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "System.out.println(5 + 5);",
+        "System.out.println(5, 5);",
+        "System.out.println(5 + \" \" + 5);",
+        "System.out.println(5); \nSystem.out.println(5);"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 138,
+      "question": "What does the following code achieve?",
+      "code_snippet": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(8 + \"\\n\" + 13 + \" \" + 21 + \"\\n\");\n    }}",
+      "language": "Java",
+      "options": [
+        "Prints three numbers on separate lines",
+        "Prints three numbers on the same line",
+        "Prints one number on the first line, two numbers on the next line",
+        "Throws a compilation error"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 139,
+      "question": "What is the role of \"\\n\" in the below code?",
+      "code_snippet": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(7 + \"\\n\" + 5);\n    }}",
+      "language": "Java",
+      "options": [
+        "Subtraction",
+        "Addition",
+        "Division",
+        "None of the above"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 140,
+      "question": "To print \"Java\" and \"Programming\" on the same line with a space in between, you would write:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "System.out.println(\"JavaProgramming\");",
+        "System.out.println(\"Java  \" + \"Programming\");",
+        "System.out.println(\"Java\" + \"Programming\");",
+        "System.out.println(\"Java\" + \"\\n\" + \"Programming\");"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 141,
+      "question": "How do you display the numbers 1 to 5 on the same line with spaces?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "System.out.println(1 + \" \" + 2 + \" \" + 3 + \" \" + 4 + \" \" + 5);",
+        "System.out.println(\"1 2 3 4 5\");",
+        "Both A and B",
+        "None of the above"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 142,
+      "question": "Choose the correct order of jumbled statements to calculate and return the factorial of 4.",
+      "code_snippet": "for(k = 1; k <= 4; k++) -> 1\nreturn fa; -> 2\nlong fa = 3, k; -> 3\nfa *= k; -> 4",
+      "language": "Java",
+      "options": [
+        "1, 2, 3, 4",
+        "3, 1, 4, 2",
+        "3, 1, 2, 4",
+        "1, 3, 2, 4"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 143,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.charAt(s.toUpperCase().length()));",
+      "language": "Java",
+      "options": [
+        "Convert “Z” to int 90 and prints “90”",
+        "Runtime Exception",
+        "Prints “z”",
+        "Prints “Z”"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 144,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.charAt(s.toUpperCase().length()-1));",
+      "language": "Java",
+      "options": [
+        "Convert “Z” to int 90 and prints “90”",
+        "Runtime Exception",
+        "Prints “z”",
+        "Prints “Z”"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 145,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.toUpperCase().charAt(s.toUpperCase().length()-1));",
+      "language": "Java",
+      "options": [
+        "Convert “Z” to int 90 and prints “90”",
+        "Runtime Exception",
+        "Prints “z”",
+        "Prints “Z”"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 146,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.toUpperCase().charAt(s.length()-1));",
+      "language": "Java",
+      "options": [
+        "Convert “Z” to int 90 and prints “90”",
+        "Runtime Exception",
+        "Prints “z”",
+        "Prints “Z”"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 147,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.toLowerCase().charAt(s.length()-1));",
+      "language": "Java",
+      "options": [
+        "Convert “Z” to int 90 and prints “90”",
+        "Runtime Exception",
+        "Prints “z”",
+        "Prints “Z”"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 148,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.charAt(s.length()-1));",
+      "language": "Java",
+      "options": [
+        "Convert “Z” to int 90 and prints “90”",
+        "Runtime Exception",
+        "Prints “z”",
+        "Prints “Z”"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 149,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.charAt(s.length()-16));",
+      "language": "Java",
+      "options": [
+        "Prints “j”",
+        "Prints “a”",
+        "Prints “J”",
+        "Prints “A”"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 150,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.toLowerCase().charAt(s.length()-16));",
+      "language": "Java",
+      "options": [
+        "Prints “j”",
+        "Prints “a”",
+        "Prints “J”",
+        "Prints “A”"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 151,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.toUpperCase().charAt(s.length()-16));",
+      "language": "Java",
+      "options": [
+        "Prints “j”",
+        "Prints “a”",
+        "Prints “J”",
+        "Prints “A”"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 152,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.toUpperCase().charAt(s.length()-15));",
+      "language": "Java",
+      "options": [
+        "Prints “j”",
+        "Prints “a”",
+        "Prints “J”",
+        "Prints “A”"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 153,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.toLowerCase().charAt(s.length()-15));",
+      "language": "Java",
+      "options": [
+        "Prints “j”",
+        "Prints “a”",
+        "Prints “J”",
+        "Prints “A”"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 154,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.charAt(s.length()-15));",
+      "language": "Java",
+      "options": [
+        "Prints “j”",
+        "Prints “a”",
+        "Prints “J”",
+        "Prints “A”"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 155,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.substring(5,3));",
+      "language": "Java",
+      "options": [
+        "Prints “Str”",
+        "Prints “ring”",
+        "StringIndexOutOfBoundsException Runtime Exception",
+        "StringIndexOutOfBoundsException Compile-time error"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 156,
+      "question": "What will be output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.substring(3,5));",
+      "language": "Java",
+      "options": [
+        "a ",
+        "a S",
+        "ava",
+        "StringIndexOutOfBoundsException"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 157,
+      "question": "What will be output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.substring(3,6));",
+      "language": "Java",
+      "options": [
+        "a ",
+        "a S",
+        "ava",
+        "StringIndexOutOfBoundsException"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 158,
+      "question": "What will be output of below statements?",
+      "code_snippet": "String s = \"Java String Quiz\";\nSystem.out.println(s.substring(1,4));",
+      "language": "Java",
+      "options": [
+        "a ",
+        "a S",
+        "ava",
+        "StringIndexOutOfBoundsException"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 159,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s1 = \"Cat\";\nString s2 = \"Cat\";\nString s3 = new String(\"Cat\");\nSystem.out.print(s1 == s2);\nSystem.out.print(s1 == s3);",
+      "language": "Java",
+      "options": [
+        "truefalse",
+        "truetrue",
+        "falsefalse",
+        "falsetrue"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 160,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s1 = new String(\"Cat\");\nString s2 = new String(\"Cat\");\nString s3 = new String(\"Cat\");\nSystem.out.print(s1 == s2);\nSystem.out.print(s1 == s3);",
+      "language": "Java",
+      "options": [
+        "truefalse",
+        "truetrue",
+        "falsefalse",
+        "falsetrue"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 161,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s1 = new String(\"Cat\");\nString s2 = new String(\"Cat\");\nString s3 = new String(\"Cat\");\nSystem.out.print(s1 == s3);\nSystem.out.print(s3 == s3);",
+      "language": "Java",
+      "options": [
+        "truefalse",
+        "truetrue",
+        "falsefalse",
+        "falsetrue"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 162,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s1 = new String(\"Cat\");\nString s2 = new String(\"Cat\");\nString s3 = new String(\"Cat\");\nSystem.out.print(s1 == s1);\nSystem.out.print(s3 == s3);",
+      "language": "Java",
+      "options": [
+        "truefalse",
+        "truetrue",
+        "falsefalse",
+        "falsetrue"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 163,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s1 = new String(\"Cat\");\nString s2 = new String(\"Cat\");\nString s3 = new String(\"Cat\");\nSystem.out.print(s1 == s1);\nSystem.out.print(s2 == s3);",
+      "language": "Java",
+      "options": [
+        "truefalse",
+        "truetrue",
+        "falsefalse",
+        "falsetrue"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 164,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s1 = \"Cat\";\nString s2 = \"Cat\";\nString s3 = new String(\"Cat\");\nSystem.out.print(s1 == s2);\nSystem.out.print(s3 == s3);",
+      "language": "Java",
+      "options": [
+        "truefalse",
+        "truetrue",
+        "falsefalse",
+        "falsetrue"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 165,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s1 = \"Cat\";\nString s2 = \"Cat\";\nString s3 = new String(\"Cat\");\nSystem.out.print(s1 == s3);\nSystem.out.print(s2 == s3);",
+      "language": "Java",
+      "options": [
+        "truefalse",
+        "truetrue",
+        "falsefalse",
+        "falsetrue"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 166,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s1 = \"Cat\";\nString s2 = \"Cat\";\nString s3 = new String(\"Cat\");\nSystem.out.print(s1 == s3);\nSystem.out.print(s2 == s1);",
+      "language": "Java",
+      "options": [
+        "truefalse",
+        "truetrue",
+        "falsefalse",
+        "falsetrue"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 167,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s1 = \"Cat\";\nString s2 = \"cat\";\nString s3 = new String(\"Cat\");\nSystem.out.print(s1 == s2);\nSystem.out.print(s2 == s3);",
+      "language": "Java",
+      "options": [
+        "truefalse",
+        "truetrue",
+        "falsefalse",
+        "falsetrue"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 168,
+      "question": "A matrix is generally implemented using:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "1-D array",
+        "2-D array",
+        "3-D array",
+        "Both A and B"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 169,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s1 = \"abc\";\nString s2 = \"def\";\nSystem.out.println(s1.compareTo(s2));",
+      "language": "Java",
+      "options": [
+        "0",
+        "true",
+        "-3",
+        "false"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 170,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s1 = \"abc\";\nString s2 = \"def\";\nSystem.out.println(s2.compareTo(s1));",
+      "language": "Java",
+      "options": [
+        "0",
+        "3",
+        "-3",
+        "1"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 171,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s1 = \"abc\";\nString s2 = \"abc\";\nSystem.out.println(s2.compareTo(s1));",
+      "language": "Java",
+      "options": [
+        "0",
+        "3",
+        "-3",
+        "1"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 173,
+      "question": "What will be the output of below program?",
+      "code_snippet": "public class Test {\n\tpublic static void main(String[] args) {\n\t\tString s1 = \"abc\";\n\t\tString s2 = \"abc\";\n\t\tSystem.out.println(\"s1 == s2 is:\" + s1 == s2);\n\t}\n}",
+      "language": "Java",
+      "options": [
+        "false",
+        "s1 == s2 is:true",
+        "s1 == s2 is:false",
+        "true"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 174,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java\"+1+2+\"Quiz\"+\"\"+(3+4);\nSystem.out.println(s);",
+      "language": "Java",
+      "options": [
+        "Java3Quiz7",
+        "Java12Quiz7",
+        "Java12Quiz34",
+        "Java3Quiz34"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 175,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java\"+(1+2)+\"Quiz\"+\"\"+(3+4);\nSystem.out.println(s);",
+      "language": "Java",
+      "options": [
+        "Java3Quiz7",
+        "Java12Quiz7",
+        "Java12Quiz34",
+        "Java3Quiz34"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 176,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java\"+(1+2)+\"Quiz\"+\"\"+3+4;\nSystem.out.println(s);",
+      "language": "Java",
+      "options": [
+        "Java3Quiz7",
+        "Java12Quiz7",
+        "Java12Quiz34",
+        "Java3Quiz34"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 177,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s = \"Java\"+1+2+\"Quiz\"+\"\"+3+4;\nSystem.out.println(s);",
+      "language": "Java",
+      "options": [
+        "Java3Quiz7",
+        "Java12Quiz7",
+        "Java12Quiz34",
+        "Java3Quiz34"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 178,
+      "question": "How many String objects are created by the following statements in Java?",
+      "code_snippet": "String s = \"abc\"; // statement 1\nString s1 = new String(\"abcd\"); // statement 2",
+      "language": "Java",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 179,
+      "question": "How many String objects are created by the following statements in Java?",
+      "code_snippet": "String s = \"abc\"; // statement 1\nString s1 = \"abcd\"; // statement 2",
+      "language": "Java",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 180,
+      "question": "How many String objects are created by the following statements in Java?",
+      "code_snippet": "String s = new String(\"abc\"); // statement 1\nString s1 = new String(\"abcd\"); // statement 2",
+      "language": "Java",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 181,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s1 = \"abc\";\nString s2 = new String(\"abc\");\nSystem.out.print(s1==s2);\nSystem.out.println(s1==s2.intern());",
+      "language": "Java",
+      "options": [
+        "falsetrue",
+        "falsefalse",
+        "truetrue",
+        "truefalse"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 182,
+      "question": "What will be the output of below code snippet?",
+      "code_snippet": "String s1 = new String(\"java\");\nString s2 = new String(\"JAVA\");\nSystem.out.println(s1 = s2);",
+      "language": "Java",
+      "options": [
+        "JAVA",
+        "java",
+        "true",
+        "false"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 183,
+      "question": "What will be the output of below code snippet?",
+      "code_snippet": "String s1 = new String(\"java\");\nString s2 = new String(\"JAVA\");\nSystem.out.println(s2 = s1);",
+      "language": "Java",
+      "options": [
+        "JAVA",
+        "java",
+        "true",
+        "false"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 184,
+      "question": "What will be the output of below statements?",
+      "code_snippet": "String s1 = \"abc\";\nStringBuffer s2 = new StringBuffer(s1);\nSystem.out.println(s1.equals(s2));",
+      "language": "Java",
+      "options": [
+        "false",
+        "true",
+        "ClassCastException at runtime",
+        "Compile-time error"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 186,
+      "question": "The statement \"Java compiled code (byte code) can run on all operating systems\" refers to which Java feature?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Robust and Secure",
+        "Object Oriented",
+        "Platform Independent",
+        "Multithreaded"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 187,
+      "question": "The size of '\\n' in Java is:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "2 bytes",
+        "4 bytes",
+        "8 bytes",
+        "16 bytes"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 188,
+      "question": "Identify the operator that gets the highest precedence while evaluating the given expression.",
+      "code_snippet": "a + b % c * d - e",
+      "language": "Java",
+      "options": [
+        "+",
+        "%",
+        "-",
+        "*"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 189,
+      "question": "Which of the following is a valid Java keyword?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "If",
+        "BOOLEAN",
+        "static",
+        "Switch"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 190,
+      "question": "The output of the following code is:",
+      "code_snippet": "System.out.println(Math.ceil(6.4) + Math.floor(-1-2));",
+      "language": "Java",
+      "options": [
+        "3.0",
+        "4",
+        "3",
+        "4.0"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 191,
+      "question": "Which of the following methods of the String class returns a String?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "length()",
+        "charAt(int)",
+        "replace(char, char)",
+        "indexOf(String)"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 192,
+      "question": "Which of the following is not true with regards to a switch statement?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "checks for an equality between the input and the case labels",
+        "supports floating point constants",
+        "break is used to exit from the switch block",
+        "case labels are unique"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 193,
+      "question": "What is the output of `System.out.println(ch[0]*2);`?",
+      "code_snippet": "char ch[] = {'A','E','I','O','U'};",
+      "language": "Java",
+      "options": [
+        "65",
+        "130",
+        "'A'",
+        "0"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 194,
+      "question": "To execute a loop 10 times, which of the following is correct?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "for (int i=11;i<=30;i+=2)",
+        "for (int i=11;i<=30;i+=3)",
+        "for (int i=11;i<20;i++)",
+        "for (int i=11;i<=21;i++)"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 195,
+      "question": "A single dimensional array has 50 elements, which of the following is the correct statement to initialize the last element to 100.",
+      "code_snippet": "int[] x = new int[50];\nx[49] = 100;",
+      "language": "Java",
+      "options": [
+        "x[51]=100",
+        "x[48]=100",
+        "x[49]=100",
+        "x[50]=100"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 196,
+      "question": "Method prototype for the method compute which accepts two integer arguments and returns true/false.",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "void compute (int a, int b)",
+        "boolean compute (int a, int b)",
+        "Boolean compute (int a,b)",
+        "int compute (int a, int b)"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 197,
+      "question": "The statement that brings the control back to the calling method is:",
+      "code_snippet": "public int myMethod() {\n    // code\n    return 0; // Control returns here\n}",
+      "language": "Java",
+      "options": [
+        "break",
+        "System.exit(0)",
+        "continue",
+        "return"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 198,
+      "question": "The default value of a boolean variable is:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "False",
+        "0",
+        "false",
+        "True"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 199,
+      "question": "The method to convert a lowercase character to uppercase is:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "String.toUpperCase( )",
+        "Character.isUppercase( char )",
+        "Character.toUpperCase( char )",
+        "toUpperCase ( )"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 200,
+      "question": "Assertion (A): Integer class can be used in the program without calling a package. Reason (R): It belongs to the default package java.lang.",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Both Assertion (A) and Reason (R) are true and Reason (R) is a correct explanation of Assertion (A)",
+        "Both Assertion (A) and Reason (R) are true and Reason (R) is not a correct explanation of Assertion(A)",
+        "Assertion (A) is true and Reason (R) is false",
+        "Assertion (A) is false and Reason (R) is true"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 201,
+      "question": "A student executes the following code to increase the value of a variable ‘x’ by 2. He has written the following statement, which is incorrect: `x = +2;`. What will be the correct statement?",
+      "code_snippet": "A. x += 2\nB. x = 2\nC. x = x + 2",
+      "language": "Java",
+      "options": [
+        "Only A",
+        "Only C",
+        "All the three",
+        "Both A and C"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 202,
+      "question": "The statement used to find the total number of Strings present in the string array String s[] is:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": ["s.length", "s.length()", "length(s)", "len(s)"],
+      "correct_answer": 0
+    },
+    {
+      "id": 203,
+      "question": "Choose the correct order of statements to swap two variables using a third (temporary) variable.",
+      "code_snippet": "void swap(int a, int b)\n{\t\n  a = b;      → (1)\n  b = t;      → (2)\n  int t = 0;  → (3)\n  t = a;      → (4)\n}",
+      "language": "C / C++ / Java",
+      "options": ["(1) (2) (3) (4)", "(3) (4) (1) (2)", "(1) (3) (4) (2)", "(2) (1) (4) (3)"],
+      "correct_answer": 1
+    },
+    {
+      "id": 204,
+      "question": "Analyze the following statements regarding method arguments and parameters:\n\nAssertion (A): An argument is a value that is passed to a method when it is called.\n\nReason (R): Variables which are declared in a method prototype to receive values are called actual parameters",
+      "code_snippet": null,
+      "language": "Computer Science / Programming",
+      "options": [
+        "Both Assertion (A) and Reason (R) are true and Reason (R) is a correct explanation of Assertion (A)",
+        "Both Assertion (A) and Reason (R) are true and Reason (R) is not a correct explanation of Assertion(A)",
+        "Assertion (A) is true and Reason (R) is false",
+        "Assertion (A) is false and Reason (R) is true"
+      ],
+      "correct_answer": 2
+    },
+    {
+      "id": 205,
+      "question": "What is the value in `ch` after the following conversion?",
+      "code_snippet": "Int x = 98; char ch = (char)x;",
+      "language": "Java / C++",
+      "options": ["b", "A", "B", "97"],
+      "correct_answer": 0
+    },
+    {
+      "id": 206,
+      "question": "The output of the statement \"CONCENTRATION\".indexOf('T') is:",
+      "code_snippet": null,
+      "language": "Java / JavaScript",
+      "options": ["9", "7", "6", "(-1)"],
+      "correct_answer": 2
+    },
+    {
+      "id": 207,
+      "question": "The access specifier that gives least accessibility is:",
+      "code_snippet": null,
+      "language": "Java / OOP",
+      "options": ["package (default)", "public", "protected", "private"],
+      "correct_answer": 3
+    },
+    {
+      "id": 208,
+      "question": "The output of the statement \"talent\".compareTo(\"genius\") is:",
+      "code_snippet": null,
+      "language": "Java / Programming",
+      "options": ["11", "-11", "0", "13"],
+      "correct_answer": 3
+    },
+    {
+      "id": 209,
+      "question": "Which of the following is an escape sequence character in Java?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": ["/n", "\\t", "/t", "//n"],
+      "correct_answer": 1
+    },
+    {
+      "id": 210,
+      "question": "If (a > b && b > c) is true, then the largest number is:",
+      "code_snippet": null,
+      "language": "Logic / Programming",
+      "options": ["b", "c", "a", "wrong expression"],
+      "correct_answer": 2
+    },
+    {
+      "id": 211,
+      "question": "What is the output of `Math.ceil(5.4) + Math.ceil(4.5)`?",
+      "code_snippet": null,
+      "language": "Java / Programming",
+      "options": ["10.0", "11.0", "12.0", "9.0"],
+      "correct_answer": 1
+    },
+    {
+      "id": 212,
+      "question": "What is the method to check whether a character is a letter or digit?",
+      "code_snippet": null,
+      "language": "Java / Programming",
+      "options": ["isDigit(char)", "isLetterOrDigit()", "isLetterOrDigit(char)", "isLETTERorDIGIT(char)"],
+      "correct_answer": 2
+    },
+    {
+      "id": 213,
+      "question": "The extension of a Java source code file is:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": ["exe", "obj", "jvm", "java"],
+      "correct_answer": 3
+    },
+    {
+      "id": 214,
+      "question": "The number of bytes occupied by a character array of four rows and three columns are:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": ["12", "24", "96", "48"],
+      "correct_answer": 1
+    },
+    {
+      "id": 215,
+      "question": "Which of the following data type cannot be used with switch case construct?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": ["int", "char", "String", "double"],
+      "correct_answer": 3
+    },
+    {
+      "id": 216,
+      "question": "A method which reverses a given number is:",
+      "code_snippet": null,
+      "language": "Programming / Functional Concepts",
+      "options": ["Impure method", "Pure method", "Constructor", "Destructor"],
+      "correct_answer": 1
+    },
+    {
+      "id": 217,
+      "question": "If the name of the class is \"Yellow\", what can be the possible name for its constructors?",
+      "code_snippet": null,
+      "language": "Java / OOP",
+      "options": ["yellow", "YELLOW", "Yell", "Yellow"],
+      "correct_answer": 3
+    },
+    {
+      "id": 218,
+      "question": "Invoking a method by passing the objects of a class is termed as:",
+      "code_snippet": null,
+      "language": "OOP / Programming Concepts",
+      "options": ["Call by reference", "Call by value", "Call by method", "Call by constructor"],
+      "correct_answer": 0
+    },
+    {
+      "id": 219,
+      "question": "The correct statement to create an object named 'mango' of class 'Fruit':",
+      "code_snippet": null,
+      "language": "Java / OOP",
+      "options": ["Fruit Mango= new fruit();", "fruit mango = new fruit();", "Mango fruit=new Mango();", "fruit mango= new mango();"],
+      "correct_answer": 1
+    },
+    {
+      "id": 220,
+      "question": "Analyze the following statements regarding static members in programming:\n\nAssertion (A): Static method can access static and instance variables.\n\nReason (R): Static variable can be accessed only by static method.",
+      "code_snippet": null,
+      "language": "Java / OOP",
+      "options": [
+        "Assertion and Reason both are correct.",
+        "Assertion is true and Reason is false.",
+        "Assertion is false and Reason is true.",
+        "Assertion and Reason both are false."
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 221,
+      "question": "What is the output of the Java code given below?",
+      "code_snippet": "String color[] = {\"Blue\", \"Red\", \"Violet\"};\nSystem.out.println(color[2].length());",
+      "language": "Java",
+      "options": ["6", "5", "3", "2"],
+      "correct_answer": 0
+    },
+    {
+      "id": 222,
+      "question": "Which of the following mathematical methods returns only an integer?",
+      "code_snippet": null,
+      "language": "Java",
+      "options": ["Math.ceil(n)", "Math.sqrt(n)", "Math.floor(n)", "Math.round(n)"],
+      "correct_answer": 3
+    },
+    {
+      "id": 223,
+      "question": "The expression which uses >= operator is known as:",
+      "code_snippet": null,
+      "language": "Programming Concepts",
+      "options": ["relational", "logical", "arithmetic", "assignment"],
+      "correct_answer": 0
+    },
+    {
+      "id": 224,
+      "question": "Ternary operator is a:",
+      "code_snippet": null,
+      "language": "Programming Concepts",
+      "options": ["logical operator", "arithmetic operator", "relational operator", "conditional operator"],
+      "correct_answer": 3
+    },
+    {
+      "id": 225,
+      "question": "When primitive data type is converted to a corresponding object of its class, it is called:",
+      "code_snippet": null,
+      "language": "Java / Programming Concepts",
+      "options": ["Boxing", "Unboxing", "explicit type conversion", "implicit type conversion"],
+      "correct_answer": 0
+    },
+    {
+      "id": 226,
+      "question": "The number of bytes occupied by a character array of 10 elements.",
+      "code_snippet": null,
+      "language": "Java / Programming Concepts",
+      "options": ["20 bytes", "60 bytes", "40 bytes", "120 bytes"],
+      "correct_answer": 0
+    },
+    {
+      "id": 227,
+      "question": "The method of Scanner class used to accept a double value is:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": ["nextInt()", "nextDouble()", "next()", "nextInteger()"],
+      "correct_answer": 1
+    },
+    {
+      "id": 228,
+      "question": "Among the following which is a keyword:",
+      "code_snippet": null,
+      "language": "Programming Concepts",
+      "options": ["every", "all", "case", "each"],
+      "correct_answer": 2
+    },
+    {
+      "id": 229,
+      "question": "The output of Math.round(6.6) + Math.ceil(3.4) is:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": ["9.0", "11.0", "10.0", "11"],
+      "correct_answer": 1
+    },
+    {
+      "id": 230,
+      "question": "Name the type of error, if any in the following statement:\n\nSystem.out.print(\"HELLO\")",
+      "code_snippet": "System.out.print(\"HELLO\")",
+      "language": "Java",
+      "options": ["logical", "no error", "runtime", "syntax"],
+      "correct_answer": 3
+    },
+    {
+      "id": 231,
+      "question": "Java statement to access the 5th element of an array is:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "X[4]",
+        "X[5]",
+        "X[3]",
+        "X[0]"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 232,
+      "question": "The output of \"Remarkable\".substring(6) is:",
+      "code_snippet": "\"Remarkable\".substring(6)",
+      "language": "Java",
+      "options": [
+        "mark",
+        "emark",
+        "marka",
+        "able"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 233,
+      "question": "Which of the following is the wrapper class for the data type char?",
+      "code_snippet": null,
+      "language": "Java / Programming Concepts",
+      "options": ["String", "Char", "Character", "Float"],
+      "correct_answer": 2
+    },
+    {
+      "id": 234,
+      "question": "Name the package that contains wrapper classes:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": ["java.lang", "java.util", "java.io", "java.awt"],
+      "correct_answer": 0
+    },
+    {
+      "id": 235,
+      "question": "Constructor overloading follows which principle of Object Oriented programming?",
+      "code_snippet": null,
+      "language": "OOP",
+      "options": ["Inheritance", "Polymorphism", "Abstraction", "Encapsulation"],
+      "correct_answer": 1
+    },
+    {
+      "id": 236,
+      "question": "Which of the following is a valid Integer constant?\ni. 4\nii. 4.0\niii. 4.3f\niv. \"four\"",
+      "code_snippet": null,
+      "language": "Programming Concepts",
+      "options": ["Only i", "i and iii", "ii and iv", "i and ii"],
+      "correct_answer": 0
+    },
+    {
+      "id": 237,
+      "question": "The method compareTo() returns ............... when two strings are equal and in lowercase :",
+      "code_snippet": null,
+      "language": "Java",
+      "options": ["true", "0", "1", "false"],
+      "correct_answer": 1
+    },
+    {
+      "id": 238,
+      "question": "Assertion (A): In Java, statements written in lower case letter or upper case letter are treated as the same. \nReason (R): Java is a case sensitive language.",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Both Assertion (A) and Reason (R) are true and Reason (R) is a correct explanation of Assertion (A)",
+        "Both Assertion (A) and Reason (R) are true and Reason (R) is not a correct explanation of Assertion (A)",
+        "Assertion (A) is true and Reason (R) is false",
+        "Assertion (A) is false and Reason (R) is true"
+      ],
+      "correct_answer": 3
+    },
+    {
+      "id": 239,
+      "question": "What does a class encapsulate?",
+      "code_snippet": null,
+      "language": "OOP / Java",
+      "options": [
+        "Information and operation",
+        "Data members and Member methods",
+        "Data members and information",
+        "Member methods and operation"
+      ],
+      "correct_answer": 1
+    },
+    {
+      "id": 240,
+      "question": "Assertion (A): Call by value is known as pure method. \nReason (R): The original value of variable does not change as operation is performed on copied values.",
+      "code_snippet": null,
+      "language": "Java",
+      "options": [
+        "Both Assertion (A) and Reason (R) are true and Reason (R) is a correct explanation of Assertion (A)",
+        "Both Assertion (A) and Reason (R) are true and Reason (R) is not a correct explanation of Assertion (A)",
+        "Assertion (A) is true and Reason (R) is false",
+        "Assertion (A) is false and Reason (R) is true"
+      ],
+      "correct_answer": 0
+    },
+    {
+      "id": 241,
+      "question": "What will be the output?",
+      "code_snippet": "System.out.print(Character.toLowerCase('1'));",
+      "language": "Java",
+      "options": ["0", "1", "A", "true"],
+      "correct_answer": 1
+    },
+    {
+      "id": 242,
+      "question": "A mechanism where one class acquires the properties of another class:",
+      "code_snippet": null,
+      "language": "OOP / Java",
+      "options": ["Polymorphism", "Inheritance", "Encapsulation", "Abstraction"],
+      "correct_answer": 1
+    },
+    {
+      "id": 243,
+      "question": "Identify the type of operator &&:",
+      "code_snippet": null,
+      "language": "Programming Concepts",
+      "options": ["ternary", "unary", "logical", "relational"],
+      "correct_answer": 2
+    },
+    {
+      "id": 244,
+      "question": "The Scanner class method used to accept words with space:",
+      "code_snippet": null,
+      "language": "Java",
+      "options": ["next()", "nextLine()", "Next()", "nextString()"],
+      "correct_answer": 1
     }
-  ]
+
+  ] 
 }
