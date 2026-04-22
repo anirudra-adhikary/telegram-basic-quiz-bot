@@ -227,3 +227,10 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+
+# Ignore question databases
+questions_*.json
+
+# Optional: ignore pickle data file
+*.pickle
