@@ -26,9 +26,6 @@ logger = logging.getLogger(__name__)
 
 load_dotenv()  # Load environment variables from .env file
 
-import json
-from telegram.ext import Application, CommandHandler
-
 QUIZ_DATABASES = {
     "java": "questions_java.json",
     "python": "questions_python.json",
@@ -37,7 +34,7 @@ QUIZ_DATABASES = {
     "demo": "questions_jeca.json",
 }
 
-# --- Bot Handlers ---
+# --- Bot Handler ---
 
 async def bot(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Starts a new quiz in the group chat, only if initiated by an admin."""
