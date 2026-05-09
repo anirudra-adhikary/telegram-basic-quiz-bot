@@ -26,9 +26,20 @@ logger = logging.getLogger(__name__)
 
 load_dotenv()  # Load environment variables from .env file
 
+import json
+from telegram.ext import Application, CommandHandler
+
+QUIZ_DATABASES = {
+    "java": "questions_java.json",
+    "python": "questions_python.json",
+    "competitive": "questions_competitive.json",
+    "jeca": "questions_jeca.json",
+    "demo": "questions_jeca.json",
+}
+
 # --- Bot Handlers ---
 
-async def jeca(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+async def bot(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Starts a new quiz in the group chat, only if initiated by an admin."""
     chat = update.effective_chat
     user = update.effective_user
@@ -65,9 +76,16 @@ async def jeca(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             "Wait for it to finish before starting a new one."
         )
         return
+    
+    command = update.message.text.split()[0][1:]
+    database = QUIZ_DATABASES.get(command)
 
+    if not database:
+        await update.message.reply_text("Invalid command")
+        return
+    
     try:
-        with open('questions_jeca.json', 'r', encoding="utf-8") as f:
+        with open(database, 'r', encoding="utf-8") as f:
             questions_data = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError) as e:
         logger.error(f"Error loading questions: {e}")
@@ -77,234 +95,6 @@ async def jeca(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     all_questions = questions_data.get("questions", [])
     QUIZ_LENGTH = 3
     
-    if len(all_questions) < QUIZ_LENGTH:
-        await update.message.reply_text(f"❌ Not enough questions in the database. Need at least {QUIZ_LENGTH}.")
-        return
-
-    selected_questions = random.sample(all_questions, QUIZ_LENGTH)
-    
-    quiz_data = {
-        'quiz_questions': selected_questions,
-        'current_question_index': 0,
-        'scores': {},
-        'quiz_active': True,
-        'chat_id': chat_id
-    }
-    
-    context.bot_data[active_quiz_key] = quiz_data
-
-    await update.message.reply_text(
-        f"🎯 **Quiz Started!**\n\n"
-        f"• {QUIZ_LENGTH} random questions\n"
-        "• 45 seconds per question\n\n"
-        "Good luck! 🍀",
-        parse_mode='Markdown'
-    )
-
-    await send_next_question(context, quiz_data)
-
-async def competitive(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Starts a new quiz in the group chat, only if initiated by an admin."""
-    chat = update.effective_chat
-    user = update.effective_user
-
-    if not user or not chat:
-        logger.warning("Could not get user or chat from update.")
-        return
-        
-    # --- Admin Check Logic ---
-    if chat.type == 'private':
-        await update.message.reply_text("This command only works in groups! 😅")
-        return
-
-    try:
-        chat_member = await context.bot.get_chat_member(chat_id=chat.id, user_id=user.id)
-    except Exception as e:
-        logger.error(f"Error checking chat member status: {e}")
-        await update.message.reply_text("I couldn't check your permissions. 😬\nMake sure I have admin rights to see other members.")
-        return
-
-    if chat_member.status not in ['administrator', 'creator']:
-        await update.message.reply_text("Sorry, only group admins can start a quiz! ⛔️")
-        return
-        
-    logger.info(f"Admin check passed for user {user.id} in chat {chat.id}. Starting quiz...")
-    # --- End Admin Check Logic ---
-
-    chat_id = update.effective_chat.id
-    active_quiz_key = f'active_quiz_{chat_id}'
-    
-    if context.bot_data.get(active_quiz_key, {}).get('quiz_active', False):
-        await update.message.reply_text(
-            "A quiz is already in progress in this group! 😮\n"
-            "Wait for it to finish before starting a new one."
-        )
-        return
-
-    try:
-        with open('questions_competive.json', 'r', encoding="utf-8") as f:
-            questions_data = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        logger.error(f"Error loading questions: {e}")
-        await update.message.reply_text("❌ Sorry, I couldn't load the quiz questions right now.")
-        return
-
-    all_questions = questions_data.get("questions", [])
-    QUIZ_LENGTH = 10
-    
-    if len(all_questions) < QUIZ_LENGTH:
-        await update.message.reply_text(f"❌ Not enough questions in the database. Need at least {QUIZ_LENGTH}.")
-        return
-
-    selected_questions = random.sample(all_questions, QUIZ_LENGTH)
-    
-    quiz_data = {
-        'quiz_questions': selected_questions,
-        'current_question_index': 0,
-        'scores': {},
-        'quiz_active': True,
-        'chat_id': chat_id
-    }
-    
-    context.bot_data[active_quiz_key] = quiz_data
-
-    await update.message.reply_text(
-        f"🎯 **Quiz Started!**\n\n"
-        f"• {QUIZ_LENGTH} random questions\n"
-        "• 45 seconds per question\n\n"
-        "Good luck! 🍀",
-        parse_mode='Markdown'
-    )
-
-    await send_next_question(context, quiz_data)
-
-#python quiz
-async def python(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Starts a new quiz in the group chat, only if initiated by an admin."""
-    chat = update.effective_chat
-    user = update.effective_user
-
-    if not user or not chat:
-        logger.warning("Could not get user or chat from update.")
-        return
-        
-    # --- Admin Check Logic ---
-    if chat.type == 'private':
-        await update.message.reply_text("This command only works in groups! 😅")
-        return
-
-    try:
-        chat_member = await context.bot.get_chat_member(chat_id=chat.id, user_id=user.id)
-    except Exception as e:
-        logger.error(f"Error checking chat member status: {e}")
-        await update.message.reply_text("I couldn't check your permissions. 😬\nMake sure I have admin rights to see other members.")
-        return
-
-    if chat_member.status not in ['administrator', 'creator']:
-        await update.message.reply_text("Sorry, only group admins can start a quiz! ⛔️")
-        return
-        
-    logger.info(f"Admin check passed for user {user.id} in chat {chat.id}. Starting quiz...")
-    # --- End Admin Check Logic ---
-
-    chat_id = update.effective_chat.id
-    active_quiz_key = f'active_quiz_{chat_id}'
-    
-    if context.bot_data.get(active_quiz_key, {}).get('quiz_active', False):
-        await update.message.reply_text(
-            "A quiz is already in progress in this group! 😮\n"
-            "Wait for it to finish before starting a new one."
-        )
-        return
-
-    try:
-        with open('questions_python.json', 'r', encoding="utf-8") as f:
-            questions_data = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        logger.error(f"Error loading questions: {e}")
-        await update.message.reply_text("❌ Sorry, I couldn't load the quiz questions right now.")
-        return
-
-    all_questions = questions_data.get("questions", [])
-    QUIZ_LENGTH = 15
-    
-    if len(all_questions) < QUIZ_LENGTH:
-        await update.message.reply_text(f"❌ Not enough questions in the database. Need at least {QUIZ_LENGTH}.")
-        return
-
-    selected_questions = random.sample(all_questions, QUIZ_LENGTH)
-    
-    quiz_data = {
-        'quiz_questions': selected_questions,
-        'current_question_index': 0,
-        'scores': {},
-        'quiz_active': True,
-        'chat_id': chat_id
-    }
-    
-    context.bot_data[active_quiz_key] = quiz_data
-
-    await update.message.reply_text(
-        f"🎯 **Quiz Started!**\n\n"
-        f"• {QUIZ_LENGTH} random questions\n"
-        "• 45 seconds per question\n\n"
-        "Good luck! 🍀",
-        parse_mode='Markdown'
-    )
-
-    await send_next_question(context, quiz_data)
-
-
-#java quiz
-async def java(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Starts a new quiz in the group chat, only if initiated by an admin."""
-    chat = update.effective_chat
-    user = update.effective_user
-
-    if not user or not chat:
-        logger.warning("Could not get user or chat from update.")
-        return
-        
-    # --- Admin Check Logic ---
-    if chat.type == 'private':
-        await update.message.reply_text("This command only works in groups! 😅")
-        return
-
-    try:
-        chat_member = await context.bot.get_chat_member(chat_id=chat.id, user_id=user.id)
-    except Exception as e:
-        logger.error(f"Error checking chat member status: {e}")
-        await update.message.reply_text("I couldn't check your permissions. 😬\nMake sure I have admin rights to see other members.")
-        return
-
-    if chat_member.status not in ['administrator', 'creator']:
-        await update.message.reply_text("Sorry, only group admins can start a quiz! ⛔️")
-        return
-        
-    logger.info(f"Admin check passed for user {user.id} in chat {chat.id}. Starting quiz...")
-    # --- End Admin Check Logic ---
-
-    chat_id = update.effective_chat.id
-    active_quiz_key = f'active_quiz_{chat_id}'
-    
-    if context.bot_data.get(active_quiz_key, {}).get('quiz_active', False):
-        await update.message.reply_text(
-            "A quiz is already in progress in this group! 😮\n"
-            "Wait for it to finish before starting a new one."
-        )
-        return
-
-    try:
-        with open('questions_java.json', 'r', encoding="utf-8") as f:
-            questions_data = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        logger.error(f"Error loading questions: {e}")
-        await update.message.reply_text("❌ Sorry, I couldn't load the quiz questions right now.")
-        return
-
-    all_questions = questions_data.get("questions", [])
-    QUIZ_LENGTH = 20
-
     if len(all_questions) < QUIZ_LENGTH:
         await update.message.reply_text(f"❌ Not enough questions in the database. Need at least {QUIZ_LENGTH}.")
         return
@@ -670,12 +460,11 @@ def main() -> None:
     # Pass the request object to the builder
     application = Application.builder().token(TOKEN).persistence(my_persistence).request(request).build()
 
-    application.add_handler(CommandHandler("java", java))
+    for command in QUIZ_DATABASES.keys():
+        application.add_handler(CommandHandler(command, bot))
+
     application.add_handler(CommandHandler("scoreboard", scoreboard))
     application.add_handler(PollAnswerHandler(handle_poll_answer))
-    application.add_handler(CommandHandler("python", python))
-    application.add_handler(CommandHandler("competitive", competitive))
-    application.add_handler(CommandHandler("jeca", jeca))
     application.add_handler(CommandHandler("kill", stop_quiz))
 
     logger.info("Starting bot...")
